@@ -1,0 +1,91 @@
+.header {
+    position: relative;
+    .header-wrapper {
+        display: flex;
+        height: 84px;
+        gap: 20px;
+        .logo {
+            height: 100%;
+            padding: 7.5px;
+            margin-left: -7.5px;
+            cursor: pointer;
+        }
+        .navigate-wrapper {
+            display: flex;
+            padding: 12px;
+            gap: 24px;
+            cursor: pointer;
+            span {
+                font-size: 16px;
+            }
+            img {
+                margin-left: 8px;
+                width: 10px;
+                height: auto;
+            }
+        }
+        .icons-wrapper {
+            flex-grow: 1;
+            display: flex;
+            justify-content: flex-end;
+            img {
+                height: 100%;
+                width: auto;
+                padding: 12px 0;
+                margin: 0 12px;
+                cursor: pointer;
+            }
+        }
+    }
+    .search-wrapper {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 4px;
+        height: 84px;
+        background-color: #fff;
+        position: absolute;
+        transform: translateY(-100%);
+        transition: all 0.3s ease-in;
+        .search {
+            height: 45px;
+            width: 740px;
+            display: flex;
+            align-items: center;
+            border: 1px solid #000000;
+            transition: all 0.2s ease-in;
+            img {
+                margin-left: 4px;
+            }
+            input {
+                flex-grow: 1;
+                font-size: 16px;
+                border: none;
+                outline: none;
+                padding-left: 20px;
+                &::placeholder {
+                    color: #000000;
+                }
+            }
+            &:has(> input:focus) {
+                box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 2px,
+                    rgb(51, 51, 51) 0px 0px 0px 2px;
+            }
+            &:hover {
+                box-shadow: rgba(185, 185, 185, 0.16) 0px 1px 2px,
+                    rgb(85, 85, 85) 0px 0px 0px 2px;
+                border-color: #999999;
+            }
+        }
+        img {
+            width: 44px;
+            height: 44px;
+            padding: 13px;
+            cursor: pointer;
+        }
+    }
+}
+
+#searching {
+    transform: translateY(0);
+}

@@ -1,0 +1,51 @@
+@import url("https://fonts.googleapis.com/css2?family=Assistant:wght@200;300;400;500;600;700;800&display=swap");
+
+$mobile-width: 480px;
+$tablet-width: 768px;
+$small-desktop-width: 1024px;
+$desktop-width: 1200px;
+
+@mixin mobile {
+    @media (max-width: #{$mobile -width - 1px}) {
+        @content;
+    }
+}
+
+@mixin tablet {
+    @media (min-width: #{$tablet-width}) and (max-width: #{$small-desktop-width - 1px}) {
+        @content;
+    }
+}
+
+@mixin smallDesktop {
+    @media (min-width: #{$small-desktop-width}) and (max-width: #{$desktop-width - 1px}) {
+        @content;
+    }
+}
+
+@mixin desktop {
+    @media (min-width: #{$desktop-width}) {
+        @content;
+    }
+}
+
+* {
+    font-family: "Assistant", sans-serif;
+    font-size: 100%;
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+}
+
+.container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    .wrapper {
+        width: 100%;
+        padding: 20px 50px;
+        @include desktop {
+            width: 1200px;
+        }
+    }
+}

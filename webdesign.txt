@@ -1,0 +1,10 @@
+- ideation
+    - shopcart / shop bags & shoes
+- design 
+    - link: https://themes.shopify.com/themes/dawn/styles/default/preview
+- database structure
+- backend
+- frontend 
+- connect backend / frontend
+- deploy
+- finish

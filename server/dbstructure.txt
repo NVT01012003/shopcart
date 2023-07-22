@@ -1,0 +1,69 @@
+
+user
+    - id: uuid default v4 / primary key
+    - first_name: string not null
+    - last_name: string not null
+    - is_admin: boolean default false
+    - email: string unique default null
+    - oauthId: string unique default null
+    - address: string default null
+    - password: string defualt null
+    - created_at: true
+
+product
+    - id: uuid default v4 / primary key
+    - name: string not null 
+    - desc: text default null
+    - category: string not null  
+    - price: decimal not null
+    - sale: boolean default false
+    - photo: string not null
+
+specifications
+    - productId: uuid not null / foreign key product.id
+    - height: decimal default null / m
+    - witdh: decimal default null / m
+    - weight: decimal not null  / kg
+    - color: string default null 
+    - brand: string default null 
+    - material: string default null 
+
+order_detail
+    - id: uuid default v4 / primary key
+    - userId: uuid not null / foreign key user.id
+    - total: decimal not null 
+    - created_at: true
+
+order_item
+    - orderId: uuid not null / foreign key order_detail.id
+    - productId: uuid not null / foreign key product.id
+
+delivery
+    - id: uuid default v4 / primary key
+    - orderDetailId: uuid not null / foreign key order_detail.id
+    - from: string not null 
+    - to: string not null 
+    - phone: string not null 
+    - total: decimal not null 
+    - created_at: true
+
+chat
+    - id: uuid default v4 / primary key
+    - userId: uuid not null / foreign key user.id
+    - created_at: true
+
+message
+    - id: uuid default v4 / primary key
+    - chatId: uuid not null / foreign key chat.id
+    - text: text default null 
+    - media: string not null 
+    - created_at: true
+
+blog
+    - id: uuid default v4 / primary key
+    - title: text not null 
+    - title_image: string not null
+    - content_image: string[] default []
+    - text: text not null 
+    - productId: uuid default null 
+    - created_at: true
