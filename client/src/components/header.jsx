@@ -15,24 +15,29 @@ export const Header = () => {
                 <img
                     className="logo"
                     src="https://theme-dawn-demo.myshopify.com/cdn/shop/files/Dawn_logo.png?v=1637111732&width=600%22%20alt=%22Dawn%22%20srcset=%22//theme-dawn-demo.myshopify.com/cdn/shop/files/Dawn_logo.png"
+                    alt="logo"
                 />
                 <div className="navigate-wrapper">
                     <div className="bags-wrapper">
                         <span>Bags</span>
-                        <img src={ArrowDown} />
+                        <img src={ArrowDown} alt="arrow" />
                     </div>
                     <div className="shoes-wrapper">
                         <span>Shoes</span>
-                        <img src={ArrowDown} />
+                        <img src={ArrowDown} alt="arrow" />
                     </div>
                     <div className="Lookbook-wrapper">
                         <span>Lookbook</span>
                     </div>
                 </div>
                 <div className="icons-wrapper">
-                    <img src={Search} onClick={() => setSearching(true)} />
-                    <img src={User} />
-                    <img src={Bag} />
+                    <img
+                        src={Search}
+                        alt="search"
+                        onClick={() => setSearching(true)}
+                    />
+                    <img src={User} alt="user" />
+                    <img src={Bag} alt="blog" />
                 </div>
             </div>
             <div
@@ -41,10 +46,11 @@ export const Header = () => {
             >
                 <div className="search">
                     <input type="text" placeholder="Search" />
-                    <img src={Search} />
+                    <img src={Search} alt="search" />
                 </div>
                 <img
                     className="close"
+                    alt="close"
                     src={Close}
                     onClick={() => setSearching(false)}
                 />
