@@ -1,0 +1,105 @@
+.signin-wrapper {
+    margin-top: 84px;
+    margin-bottom: 48px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    .form-container {
+        padding: 16px 15px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 20px;
+        h2 {
+            font-size: 42px;
+            font-weight: 400;
+        }
+        input {
+            width: 446px;
+            height: auto;
+            padding: 15px;
+            font-size: 16px;
+            border: 1px solid #000;
+            outline: none;
+            &::placeholder {
+                color: #000;
+            }
+        }
+        .forgot-password,
+        .register-link {
+            font-size: 15px;
+            text-decoration: underline #121212bf 0.8px;
+            color: #121212bf;
+            text-underline-offset: 4px;
+            cursor: pointer;
+            &:hover {
+                text-decoration: underline #000 1.6px;
+                color: #000;
+            }
+        }
+        .forgot-password {
+            width: 100%;
+        }
+        .btn-wrapper {
+            margin-top: 20px;
+            height: 48px;
+            display: flex;
+            align-items: center;
+            button {
+                background-color: #000;
+                color: #fff;
+                padding: 10px 38px;
+                cursor: pointer;
+                transition: all 0.2s ease;
+                &:hover {
+                    padding: 12px 40px;
+                }
+            }
+        }
+        .enter {
+            font-size: 15px;
+            color: #121212bf;
+        }
+        .or {
+            font-size: 15px;
+            font-weight: 600;
+        }
+        .social-login-wrapper {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            width: 320px;
+            .social-btn {
+                padding: 10px 20px;
+                background-color: #000;
+                border-radius: 2px;
+                display: flex;
+                align-items: center;
+                cursor: pointer;
+                img {
+                    width: 30px;
+                    height: 30px;
+                    filter: invert(100%);
+                    transition: all 0.2s ease;
+                }
+                span {
+                    display: block;
+                    flex-grow: 1;
+                    text-align: center;
+                    color: #fff;
+                    font-size: 16px;
+                    font-weight: 500;
+                    transition: all 0.2s ease;
+                }
+                &:hover {
+                    img {
+                        filter: invert(80%);
+                    }
+                    span {
+                        color: #e1e1e1;
+                    }
+                }
+            }
+        }
+    }
+}

@@ -55,7 +55,7 @@ export const Footer = () => {
                     <div className="footer_content-wrapper">
                         <div className="subscribe-wrapper">
                             <h2>Subscribe to our emails</h2>
-                            <div className="iput-wrapper">
+                            <div className="iput-wrapper div-input-border">
                                 <input type="text" placeholder="Email" />
                                 <img src={Next} alt="next" />
                             </div>

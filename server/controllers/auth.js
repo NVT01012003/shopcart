@@ -38,3 +38,16 @@ export const findAllUser = async () => {
     });
     return users;
 };
+
+export const updatePassword = async ({ password, id }) => {
+    const user = await User.update(
+        { password },
+        {
+            where: {
+                id,
+            },
+            returning: true,
+        }
+    );
+    return user;
+};
