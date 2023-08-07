@@ -5,6 +5,7 @@ import Bag from "../imgs/bag.png";
 import Close from "../imgs/close.png";
 import "../styles/header.scss";
 import { useRef, useState } from "react";
+import { Link } from "react-router-dom";
 
 const bags = {
     "Shop all": "/",
@@ -33,11 +34,13 @@ export const Header = ({ show }) => {
             id={show == "show" ? "show" : show == "hidden" ? "hidden" : ""}
         >
             <div className="header-wrapper wrapper">
-                <img
-                    className="logo"
-                    src="https://theme-dawn-demo.myshopify.com/cdn/shop/files/Dawn_logo.png?v=1637111732&width=600%22%20alt=%22Dawn%22%20srcset=%22//theme-dawn-demo.myshopify.com/cdn/shop/files/Dawn_logo.png"
-                    alt="logo"
-                />
+                <Link to="/">
+                    <img
+                        className="logo"
+                        src="https://theme-dawn-demo.myshopify.com/cdn/shop/files/Dawn_logo.png?v=1637111732&width=600%22%20alt=%22Dawn%22%20srcset=%22//theme-dawn-demo.myshopify.com/cdn/shop/files/Dawn_logo.png"
+                        alt="logo"
+                    />
+                </Link>
                 <div className="navigate-wrapper">
                     <div
                         className="bags-wrapper"
@@ -90,7 +93,9 @@ export const Header = ({ show }) => {
                             ref.current.focus();
                         }}
                     />
-                    <img src={User} alt="user" />
+                    <Link to="account">
+                        <img src={User} alt="user" />
+                    </Link>
                     <img src={Bag} alt="blog" />
                 </div>
             </div>

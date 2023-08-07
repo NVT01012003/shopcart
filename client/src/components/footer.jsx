@@ -8,6 +8,7 @@ import Visa from "../imgs/visa.png";
 import Card from "../imgs/card.png";
 import Paypal from "../imgs/paypal.png";
 import ArrowDown from "../imgs/down-arrow.png";
+import { Link } from "react-router-dom";
 import "../styles/footer.scss";
 import { useState } from "react";
 
@@ -138,7 +139,9 @@ export const Footer = () => {
                     <div className="item">
                         <span>
                             <span>@ 2023, </span>
-                            <span className="dawn-shop">D A W N Shop. </span>
+                            <span className="dawn-shop">
+                                <Link to="/">D A W N Shop. </Link>
+                            </span>
                             <span className="reserved">
                                 All right reserved.
                             </span>

@@ -6,7 +6,9 @@ import { SignUp } from "./pages/signup";
 import { Reset } from "./pages/reset";
 import { Forgot } from "./pages/forgot";
 import { Account } from "./pages/account";
+import { Address } from "./pages/address";
 import "./styles/global.scss";
+import { NotFound } from "./pages/notFound";
 
 function App() {
     return (
@@ -15,12 +17,16 @@ function App() {
                 <Routes>
                     <Route path="/" element={<Layout />}>
                         <Route index element={<Home />} />
-                        <Route path="signin" element={<SignIn />} />
-                        <Route path="signup" element={<SignUp />} />
-                        <Route path="reset" element={<Reset />} />
-                        <Route path="forgot" element={<Forgot />} />
-                        <Route path="account" element={<Account />} />
+                        <Route path="account">
+                            <Route index element={<Account />} />
+                            <Route path="address" element={<Address />} />
+                            <Route path="signin" element={<SignIn />} />
+                            <Route path="signup" element={<SignUp />} />
+                            <Route path="reset" element={<Reset />} />
+                            <Route path="forgot" element={<Forgot />} />
+                        </Route>
                     </Route>
+                    <Route path="*" element={<NotFound />} />
                 </Routes>
             </div>
         </BrowserRouter>

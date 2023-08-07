@@ -1,5 +1,6 @@
 import Google from "../imgs/google.png";
 import Facebook from "../imgs/facebook.png";
+import { Link } from "react-router-dom";
 
 import "../styles/form.scss";
 
@@ -37,7 +38,9 @@ export const SignIn = () => {
                             <span>Sign in with facebook</span>
                         </div>
                     </div>
-                    <span className="register-link">Create account</span>
+                    <span className="register-link">
+                        <Link to="/account/signup">Create account</Link>
+                    </span>
                 </div>
             </div>
         </div>

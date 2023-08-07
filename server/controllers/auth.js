@@ -7,7 +7,14 @@ export const createUser = async (data) => {
 
 export const findUser = async (id) => {
     const user = await User.findOne({
-        attributes: ["id", "first_name", "last_name", "is_admin", "address"],
+        attributes: [
+            "id",
+            "first_name",
+            "last_name",
+            "is_admin",
+            "address",
+            "oauthid",
+        ],
         where: {
             id,
         },

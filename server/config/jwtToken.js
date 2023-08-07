@@ -19,6 +19,14 @@ export const generateRefreshToken = (data) => {
     return token;
 };
 
+export const generateForgotToken = ({ email, secret }) => {
+    const token = jwt.sign({ email }, secret, {
+        // update later 5 minutes
+        expiresIn: "1h",
+    });
+    return token;
+};
+
 export const verifyToken = (token) => {
     const decoded = jwt.verify(token, access_token_secret);
     return decoded;
@@ -26,5 +34,10 @@ export const verifyToken = (token) => {
 
 export const verifyRefreshToken = (token) => {
     const decoded = jwt.verify(token, access_token_secret);
+    return decoded;
+};
+
+export const verifyForgotToken = ({ token, secret }) => {
+    const decoded = jwt.verify(token, secret);
     return decoded;
 };

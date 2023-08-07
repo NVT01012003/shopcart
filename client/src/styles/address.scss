@@ -1,0 +1,164 @@
+.address-container {
+    padding: 16px 0;
+    .address {
+        margin-top: 84px;
+        display: flex;
+        flex-direction: column;
+        gap: 32px;
+        align-items: center;
+        h2 {
+            font-size: 44px;
+            font-weight: 400;
+            line-height: 52px;
+        }
+        span {
+            color: #121212bf;
+        }
+        .redirect-account {
+            font-size: 15px;
+            text-decoration: underline #121212bf 1px;
+            text-underline-offset: 4px;
+            cursor: pointer;
+            &:hover {
+                text-decoration: underline #000 2px;
+                color: #000;
+            }
+        }
+        & > .btn-wrapper {
+            margin-top: 12px;
+            height: 48px;
+            display: flex;
+            align-items: center;
+            button {
+                background-color: #000;
+                color: #fff;
+                padding: 10px 38px;
+                cursor: pointer;
+                transition: all 0.2s ease;
+                &:hover {
+                    padding: 12px 40px;
+                }
+            }
+        }
+        .default-wrapper {
+            width: 100%;
+            margin-top: 28px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 8px;
+            .title {
+                font-size: 24px;
+                font-weight: 400;
+                margin-bottom: 12px;
+            }
+            & > div {
+                margin-top: 28px;
+                display: flex;
+                gap: 12px;
+                div {
+                    width: 122px;
+                    height: 47px;
+                    display: flex;
+                    justify-content: center;
+                }
+                button {
+                    width: 120px;
+                    height: 45px;
+                    background-color: #fff;
+                    border: 1px solid #000;
+                    cursor: pointer;
+                    &:hover {
+                        height: 100%;
+                        width: 100%;
+                        border: 2px solid #000;
+                    }
+                }
+            }
+        }
+        .add-new-container {
+            flex-direction: column;
+            gap: 20px;
+            display: none;
+            & > span {
+                font-size: 24px;
+            }
+            .address-form {
+                display: flex;
+                flex-direction: column;
+                gap: 16px;
+                input {
+                    width: 446px;
+                    height: 45px;
+                    padding: 10px 20px;
+                    outline: none;
+                    border-radius: 0;
+                    border: 0.8px solid #121212bf;
+                    &::placeholder {
+                        color: #121212bf;
+                    }
+                }
+                & > div {
+                    display: flex;
+                    flex-direction: row;
+                    align-items: center;
+                    gap: 12px;
+                    label {
+                        color: #121212bf;
+                    }
+                }
+                .setDefault {
+                    width: 12px;
+                    height: 12px;
+                }
+            }
+            .btn-container {
+                display: flex;
+                gap: 20px;
+                align-items: flex-start;
+                div {
+                    height: 47px;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                }
+                button {
+                    height: 45px;
+                    padding: 0 30px;
+                    cursor: pointer;
+                    transition: width 0.2s ease, height 0.2s ease;
+                }
+                .btn-wrapper {
+                    width: 146px;
+                    button {
+                        width: 144px;
+                        background-color: #000;
+                        color: #fff;
+                        border: none;
+                        &:hover {
+                            height: 100%;
+                            width: 100%;
+                        }
+                    }
+                }
+                .cancel-btn-wrapper {
+                    width: 130px;
+                    button {
+                        width: 128px;
+                        background-color: #fff;
+                        color: #000;
+                        border: 1px solid #000;
+                        &:hover {
+                            width: 100%;
+                            height: 100%;
+                            border: 3px solid #000;
+                        }
+                    }
+                }
+            }
+        }
+        #show {
+            display: flex;
+        }
+    }
+}

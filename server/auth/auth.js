@@ -3,13 +3,20 @@ import {
     findUserByEmail,
     createUser,
     updatePassword,
+    findUser,
 } from "../controllers/auth.js";
 import { createHashPass, comparePass } from "../config/bcryptPass.js";
-import { generateToken, generateRefreshToken } from "../config/jwtToken.js";
+import {
+    generateToken,
+    generateRefreshToken,
+    generateForgotToken,
+    verifyForgotToken,
+} from "../config/jwtToken.js";
 import { mailOptions, transporter } from "../utils/mailer.js";
+import dotenv from "dotenv";
 
+dotenv.config();
 export const authRouter = Router();
-let regex = new RegExp("[a-z0-9]+@[a-z]+.[a-z]{2,3}");
 authRouter.post("/register", async (req, res, next) => {
     try {
         const data = req.body;
@@ -90,20 +97,32 @@ authRouter.post("/forgot-password", async (req, res, next) => {
         const { email } = req.body;
         const user = await findUserByEmail(email);
         if (user && !user.oauthid) {
-            transporter.sendMail(mailOptions(email), function (error, info) {
-                if (error) throw new Error("Mailing error");
-                else {
-                    res.json({
-                        status: 200,
-                        message: "OK",
-                        element: {
-                            user: {
-                                id: user.id,
-                            },
-                        },
-                    });
-                }
+            const secret = `${process.env.FORGOT_PASS_SECRET}${user.password}`;
+            const port = process.env.PORT;
+            const token = generateForgotToken({
+                email,
+                secret,
             });
+            transporter.sendMail(
+                mailOptions({
+                    to: email,
+                    link: `http://localhost:${port}/auth/forgot-password/${user.id}/${token}`,
+                }),
+                function (error) {
+                    if (error) throw new Error("Mailing error");
+                    else {
+                        res.json({
+                            status: 200,
+                            message: "OK",
+                            element: {
+                                user: {
+                                    id: user.id,
+                                },
+                            },
+                        });
+                    }
+                }
+            );
         } else throw new Error("User not found");
     } catch (e) {
         res.status(400);
@@ -111,19 +130,32 @@ authRouter.post("/forgot-password", async (req, res, next) => {
     }
 });
 
-authRouter.get("/update-password/:id", async (req, res, next) => {
-    const id = req.query.id;
+authRouter.get("/forgot-password/:id/:token", async (req, res, next) => {
     try {
-        const { password, repeastPassword } = req.body;
-        if (password != repeastPassword)
-            throw new Error("Password and repeat password is not same");
-        const user = await updatePassword(password, id);
+        const { id, token } = req.params;
+        const user = await findUser(id);
+        const secret = `${process.env.FORGOT_PASS_SECRET}${user.password}`;
+        const client_url = process.env.CLIENT_URL;
+        const { email } = verifyForgotToken({ token, secret });
+        res.render("reset", {
+            id,
+            email,
+            client_url,
+        });
+    } catch (e) {
+        res.status(400);
+        next(e);
+    }
+});
+authRouter.post("/reset-password/:id", async (req, res, next) => {
+    const { id } = req.params;
+    try {
+        const { password } = req.body;
+        const hash = createHashPass(password);
+        const user = await updatePassword({ password: hash, id });
         res.json({
             status: 200,
             message: "OK",
-            element: {
-                user,
-            },
         });
     } catch (e) {
         res.status(400);

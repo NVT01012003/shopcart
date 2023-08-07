@@ -1,10 +1,17 @@
-@import url("https://fonts.googleapis.com/css2?family=Assistant:wght@200;300;400;500;600;700;800&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Assistant:wght@200;300;400;500;600;700;800&family=Cabin:wght@400;500;600;700&family=Montserrat:wght@900&display=swap");
 
 $mobile-width: 480px;
 $tablet-width: 768px;
 $small-desktop-width: 1024px;
 $desktop-width: 1200px;
 $primary-color: #121212bf;
+
+:root {
+    --grid-desktop-vertical-spacing: 8px;
+    --grid-desktop-horizontal-spacing: 8px;
+    --grid-mobile-vertical-spacing: 4px;
+    --grid-mobile-horizontal-spacing: 4px;
+}
 
 @mixin mobile {
     @media (max-width: #{$mobile -width - 1px}) {
@@ -53,32 +60,37 @@ $primary-color: #121212bf;
         }
     }
 }
-
-.row-2 {
-    width: 100%;
-    display: flex;
-    justify-content: space-between;
-    .col-2 {
-        width: 49%;
-    }
+a {
+    color: #121212bf;
 }
 
-.row-3 {
+.m-row-2 {
     width: 100%;
-    display: flex;
-    justify-content: space-between;
-    .col-3 {
-        width: 32%;
-    }
+    display: grid;
+    grid-template-columns: auto auto;
+    gap: var(--grid-mobile-horizontal-spacing);
+    row-gap: var(--grid-mobile-vertical-spacing);
 }
 
-.row-4 {
+// .row-3 {
+//     width: 100%;
+//     display: grid;
+//     grid-template-columns: auto auto auto;
+//     gap: var(--grid-desktop-horizontal-spacing);
+//     row-gap: var(--grid-desktop-vertical-spacing);
+//     .col-4 {
+//         width: calc(
+//             calc(100% - 2 * var(--grid-desktop-horizontal-spacing)) / 3
+//         );
+//     }
+// }
+
+.d-row-4 {
     width: 100%;
-    display: flex;
-    justify-content: space-between;
-    .col-4 {
-        width: 24%;
-    }
+    display: grid;
+    grid-template-columns: auto auto auto;
+    gap: var(--grid-desktop-horizontal-spacing);
+    row-gap: var(--grid-desktop-vertical-spacing);
 }
 
 .input-border {
@@ -104,5 +116,11 @@ $primary-color: #121212bf;
         box-shadow: rgba(185, 185, 185, 0.16) 0px 1px 2px,
             rgb(85, 85, 85) 0px 0px 0px 2px;
         border-color: #999999;
+    }
+}
+
+@keyframes start {
+    from {
+        opacity: 0;
     }
 }

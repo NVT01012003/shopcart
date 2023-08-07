@@ -28,12 +28,12 @@
         .forgot-password,
         .register-link {
             font-size: 15px;
-            text-decoration: underline #121212bf 0.8px;
+            text-decoration: underline #121212bf 1px;
             color: #121212bf;
             text-underline-offset: 4px;
             cursor: pointer;
             &:hover {
-                text-decoration: underline #000 1.6px;
+                text-decoration: underline #000 2px;
                 color: #000;
             }
         }

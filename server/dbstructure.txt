@@ -8,6 +8,7 @@ user
     - oauthId: string unique default null
     - address: string default null
     - password: string defualt null
+    - country: string default 'Viet Nam'
     - created_at: true
 
 product
@@ -17,7 +18,8 @@ product
     - category: string not null  
     - price: decimal not null
     - sale: boolean default false
-    - photo: string not null
+    - discount: decimal default null
+    - photo: string[] not null
 
 specifications
     - productId: uuid not null / foreign key product.id
@@ -27,6 +29,15 @@ specifications
     - color: string default null 
     - brand: string default null 
     - material: string default null 
+
+stand
+    - id: uuid not null / primary key
+    - name: text not null
+    - photos: string[] not null
+    - products: uuid[] not null
+    - price: decimal not null
+    - discount: decimal default null
+    - min_price: boolean default false
 
 order_detail
     - id: uuid default v4 / primary key

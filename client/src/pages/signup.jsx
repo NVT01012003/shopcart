@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import "../styles/form.scss";
 
 export const SignUp = () => {
@@ -30,7 +31,9 @@ export const SignUp = () => {
                     <div className="btn-wrapper">
                         <button className="signin-btn">Create</button>
                     </div>
-                    <span className="register-link">Sign in</span>
+                    <span className="register-link">
+                        <Link to="/account/signin">Sign in</Link>
+                    </span>
                 </div>
             </div>
         </div>

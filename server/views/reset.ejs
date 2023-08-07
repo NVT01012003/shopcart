@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link rel="stylesheet" href="/style.css" type="text/css" />
+        <title>DAWN shop reset password</title>
+    </head>
+    <body>
+        <div class="container">
+            <div class="wrapper">
+                <div
+                    id="form"
+                    url="/auth/reset-password/<%= id %>"
+                    method="post"
+                    class="show"
+                >
+                    <h2>Enter your new password</h2>
+                    <input
+                        type="password"
+                        id="password"
+                        placeholder="Password"
+                        required
+                    />
+                    <span id="error-password"></span>
+                    <input
+                        type="password"
+                        id="confirm_password"
+                        placeholder="Confirm password"
+                        required
+                    />
+                    <span id="error-confirm_password"></span>
+                    <button id="submit-btn">Submit</button>
+                </div>
+                <div id="success" class="hidden">
+                    <h2>Change password successfully</h2>
+                    <a href="<%= client_url  %>">Go to page</a>
+                </div>
+            </div>
+        </div>
+    </body>
+    <script>
+        const base_url = document.URL;
+        const passwordPattern =
+            /(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#$%&.,?]).{6,10}/;
+        const form = document.getElementById("form");
+        const success = document.getElementById("success");
+        const url = `${base_url}/${form.getAttribute("url")}`;
+        const btn = document.getElementById("submit-btn");
+        const elPassword = document.getElementById("password");
+        const elConfirmPassword = document.getElementById("confirm_password");
+        const elErPassword = document.getElementById("error-password");
+        const elErConfirmPassword = document.getElementById(
+            "error-confirm_password"
+        );
+        btn.addEventListener("click", (e) => {
+            e.preventDefault();
+            const password = elPassword.value;
+            const confirmPassword = elConfirmPassword.value;
+            console.log(password.length);
+            if (password.length < 6 || password.length > 10) {
+                elErPassword.innerHTML =
+                    "Password must be length >= 6 and <= 10";
+                elErConfirmPassword.innerHTML = "";
+            } else if (!password.match(passwordPattern)) {
+                elErPassword.innerHTML =
+                    "Password must be contain a lowercase letter, uppercase letter, number and a special symbol in !@#$%&.,?";
+                elErConfirmPassword.innerHTML = "";
+            } else if (password != confirmPassword) {
+                elErConfirmPassword.innerHTML =
+                    "Password and confirm password is not same";
+                elErPassword.innerHTML = "";
+            } else {
+                elErConfirmPassword.innerHTML = "";
+                elErPassword.innerHTML = "";
+                fetch(url, {
+                    method: "POST",
+                    credentials: "same-origin",
+                    headers: {
+                        "Content-Type": "application/json",
+                    },
+                    body: JSON.stringify({ password }),
+                })
+                    .then((res) => {
+                        if (res.message != "OK")
+                            success.getElementsByTagName("h2")[0].innerHTML =
+                                "Change password is failed! Please try again.";
+
+                        form.setAttribute("class", "hidden");
+                        success.setAttribute("class", "show");
+                    })
+                    .catch((e) => {});
+            }
+        });
+    </script>
+</html>

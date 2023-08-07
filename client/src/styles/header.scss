@@ -3,7 +3,7 @@
     width: 100%;
     z-index: 1;
     background-color: #fff;
-    border-bottom: 0.8px solid #e2e2e2bf;
+    border-bottom: 1px solid #e2e2e2bf;
     transition: all 0.2s ease;
     .header-wrapper {
         display: flex;
@@ -11,8 +11,8 @@
         gap: 20px;
         .logo {
             height: 100%;
-            padding: 7.5px;
-            margin-left: -7.5px;
+            padding: 11px;
+            margin-left: -11px;
             cursor: pointer;
         }
         .navigate-wrapper {

@@ -31,8 +31,13 @@ export const Product = sequelize.define(
             defaultValue: false,
             allowNull: false,
         },
+        discount: {
+            type: DataTypes.DECIMAL,
+            allowNull: true,
+            defaultValue: null,
+        },
         photo: {
-            type: DataTypes.STRING,
+            type: DataTypes.ARRAY(DataTypes.STRING),
             allowNull: false,
         },
     },

@@ -1,4 +1,5 @@
 import User from "../imgs/user.png";
+import { Link } from "react-router-dom";
 
 import "../styles/account.scss";
 
@@ -33,7 +34,9 @@ export const Account = () => {
                         <h2>Account details</h2>
                         <span className="user_name">{user.user_name}</span>
                         <span className="country">{user.country}</span>
-                        <span className="address">View address (1)</span>
+                        <span className="address">
+                            <Link to="/account/address">View address (1)</Link>
+                        </span>
                     </div>
                 </div>
             </div>
