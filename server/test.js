@@ -1,9 +1,6 @@
-import { dirname } from "path";
-import { fileURLToPath } from "url";
+const pageNumber = 1;
+const max = 5;
 
-const __dirname = dirname(fileURLToPath(import.meta.url));
-
-console.log({
-    __dirname,
-    cwd: process.cwd(),
-});
+for (let i = pageNumber; i <= max; i++) {
+    console.log(i);
+}

@@ -8,18 +8,18 @@ import { useRef, useState } from "react";
 import { Link } from "react-router-dom";
 
 const bags = {
-    "Shop all": "/",
-    "Tote bags": "/",
-    "Shoulder bags": "/",
-    "Top handle bags": "/",
-    "Crossbody bags": "/",
-    "Mini bags": "/",
+    "Shop all": "/bags",
+    "Tote bags": "/tote bags",
+    "Shoulder bags": "/shoulder bags",
+    "Top handle bags": "/top handle bags",
+    "Crossbody bags": "/crossbody bags",
+    "Mini bags": "/mini bags",
 };
 
 const shoes = {
-    "Shop all": "/",
-    Sandals: "/",
-    Boots: "/",
+    "Shop all": "/shoes",
+    Sandals: "/sandals",
+    Boots: "/boots",
 };
 
 export const Header = ({ show }) => {
@@ -54,7 +54,10 @@ export const Header = ({ show }) => {
                         >
                             {Object.keys(bags).map((value, index) => {
                                 return (
-                                    <a key={index} href={bags[value]}>
+                                    <a
+                                        key={index}
+                                        href={`/categories${bags[value]}/1`}
+                                    >
                                         {value}
                                     </a>
                                 );
@@ -73,7 +76,10 @@ export const Header = ({ show }) => {
                         >
                             {Object.keys(shoes).map((value, index) => {
                                 return (
-                                    <a key={index} href={bags[value]}>
+                                    <a
+                                        key={index}
+                                        href={`/categories${shoes[value]}/1`}
+                                    >
                                         {value}
                                     </a>
                                 );
@@ -96,7 +102,9 @@ export const Header = ({ show }) => {
                     <Link to="account">
                         <img src={User} alt="user" />
                     </Link>
-                    <img src={Bag} alt="blog" />
+                    <Link to="cart">
+                        <img src={Bag} alt="blog" />
+                    </Link>
                 </div>
             </div>
             <div

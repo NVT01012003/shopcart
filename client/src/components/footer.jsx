@@ -79,8 +79,8 @@ export const Footer = () => {
                             <div
                                 className={
                                     !selector
-                                        ? "current-country-wrapper"
-                                        : "current-country-wrapper selector"
+                                        ? "caption-wrapper"
+                                        : "caption-wrapper selector"
                                 }
                                 onClick={() => setSelector((pre) => !pre)}
                             >
@@ -89,13 +89,13 @@ export const Footer = () => {
                                         country.country
                                     ]
                                 } | ${country.country}`}</span>
-                                <img src={ArrowDown} />
+                                <img src={ArrowDown} alt="arrow" />
                             </div>
                             <div
                                 className={
                                     !selector
-                                        ? "country-region"
-                                        : "country-region selector"
+                                        ? "selector-wrapper"
+                                        : "selector-wrapper selector"
                                 }
                             >
                                 {country_region.map((value, index) => {

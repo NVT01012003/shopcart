@@ -1,4 +1,8 @@
 import { Card } from "../components/productCad";
+import Next from "../imgs/next.png";
+import Play from "../imgs/play-button.png";
+import Logo1 from "../imgs/Mlouye_Refinery_logo.png";
+import Logo2 from "../imgs/the-cut-logo2.png";
 import "../styles/home.scss";
 const banners = [
     "//theme-dawn-demo.myshopify.com/cdn/shop/files/141569803_417219312901458_4638470652865432174_n.jpg?v=1637107084&width=3840",
@@ -17,7 +21,111 @@ const stands = [
         discount: 75000,
         min_price: true,
     },
+    {
+        id: "1",
+        name: "Louise Slide Sandal",
+        photos: [
+            "https://theme-dawn-demo.myshopify.com/cdn/shop/products/mlouye-louise-slide-sandal-buttermilk-1_b91db288-b05a-4882-ae45-c0c9a4edd5fb.jpg?v=1637106712&width=823",
+            "https://theme-dawn-demo.myshopify.com/cdn/shop/products/mlouye-louise-slide-sandal-buttermilk-5_04f1f6dd-4f7c-498b-bce7-2932fa651c00.jpg?v=1637106712&width=823",
+        ],
+        products: ["1", "2"],
+        price: 430000,
+        discount: 45000,
+        min_price: true,
+    },
+    {
+        id: "1",
+        name: "Small Convertible Flex Bag",
+        photos: [
+            "https://theme-dawn-demo.myshopify.com/cdn/shop/products/mlouye-small-convertible-flex-bag-cappuccino-n1.jpg?v=1637107143&width=1100",
+            "https://theme-dawn-demo.myshopify.com/cdn/shop/products/mlouye-small-convertible-flex-bag-cappuccino-n2.jpg?v=1637107143&width=1100",
+        ],
+        products: ["1", "2"],
+        price: 395000,
+        discount: 0,
+    },
+    {
+        id: "1",
+        name: "Louise Slide Sandal",
+        photos: [
+            "https://theme-dawn-demo.myshopify.com/cdn/shop/products/mlouye-louise-slide-sandal-buttermilk-1_b91db288-b05a-4882-ae45-c0c9a4edd5fb.jpg?v=1637106712&width=823",
+            "https://theme-dawn-demo.myshopify.com/cdn/shop/products/mlouye-louise-slide-sandal-buttermilk-5_04f1f6dd-4f7c-498b-bce7-2932fa651c00.jpg?v=1637106712&width=823",
+        ],
+        products: ["1", "2"],
+        price: 430000,
+        discount: 45000,
+        min_price: true,
+    },
+    {
+        id: "1",
+        name: "Small Convertible Flex Bag",
+        photos: [
+            "https://theme-dawn-demo.myshopify.com/cdn/shop/products/mlouye-small-convertible-flex-bag-cappuccino-n1.jpg?v=1637107143&width=1100",
+            "https://theme-dawn-demo.myshopify.com/cdn/shop/products/mlouye-small-convertible-flex-bag-cappuccino-n2.jpg?v=1637107143&width=1100",
+        ],
+        products: ["1", "2"],
+        price: 395000,
+        discount: 75000,
+        min_price: true,
+    },
+    {
+        id: "1",
+        name: "Louise Slide Sandal",
+        photos: [
+            "https://theme-dawn-demo.myshopify.com/cdn/shop/products/mlouye-louise-slide-sandal-buttermilk-1_b91db288-b05a-4882-ae45-c0c9a4edd5fb.jpg?v=1637106712&width=823",
+            "https://theme-dawn-demo.myshopify.com/cdn/shop/products/mlouye-louise-slide-sandal-buttermilk-5_04f1f6dd-4f7c-498b-bce7-2932fa651c00.jpg?v=1637106712&width=823",
+        ],
+        products: ["1", "2"],
+        price: 430000,
+        discount: 0,
+        min_price: true,
+    },
+    {
+        id: "1",
+        name: "Louise Slide Sandal",
+        photos: [
+            "https://theme-dawn-demo.myshopify.com/cdn/shop/products/mlouye-louise-slide-sandal-buttermilk-1_b91db288-b05a-4882-ae45-c0c9a4edd5fb.jpg?v=1637106712&width=823",
+            "https://theme-dawn-demo.myshopify.com/cdn/shop/products/mlouye-louise-slide-sandal-buttermilk-5_04f1f6dd-4f7c-498b-bce7-2932fa651c00.jpg?v=1637106712&width=823",
+        ],
+        products: ["1", "2"],
+        price: 430000,
+        discount: 45000,
+        min_price: true,
+    },
+    {
+        id: "1",
+        name: "Small Convertible Flex Bag",
+        photos: [
+            "https://theme-dawn-demo.myshopify.com/cdn/shop/products/mlouye-small-convertible-flex-bag-cappuccino-n1.jpg?v=1637107143&width=1100",
+            "https://theme-dawn-demo.myshopify.com/cdn/shop/products/mlouye-small-convertible-flex-bag-cappuccino-n2.jpg?v=1637107143&width=1100",
+        ],
+        products: ["1", "2"],
+        price: 395000,
+        discount: 75000,
+    },
 ];
+const backIStock = {
+    bags: {
+        image: "https://theme-dawn-demo.myshopify.com/cdn/shop/collections/Mlouye_-_Bags_collection.jpg?v=1637109194&width=750",
+    },
+    shoes: {
+        image: "https://theme-dawn-demo.myshopify.com/cdn/shop/collections/Mlouye_-_Shoe_collection.jpg?v=1637109743&width=750",
+    },
+    product: {
+        id: "1",
+        name: "Mini Eddy",
+        photos: [
+            "https://theme-dawn-demo.myshopify.com/cdn/shop/products/mlouye-small-convertible-flex-bag-cappuccino-n1.jpg?v=1637107143&width=1100",
+        ],
+        products: ["1", "2"],
+        price: 395000,
+        discount: 75000,
+        min_price: true,
+    },
+};
+const video = {
+    image: "https://theme-dawn-demo.myshopify.com/cdn/shop/files/Mlouye_video.png?v=1637108281&width=1500",
+};
 
 export const Home = () => {
     return (
@@ -48,10 +156,81 @@ export const Home = () => {
                 </div>
                 <div className="products-container container">
                     <div className="products-wrapper wrapper">
-                        <div className="products d-row-4">
+                        <div id="products">
                             {stands.map((value, index) => (
                                 <Card key={index} item={value} />
                             ))}
+                        </div>
+                    </div>
+                </div>
+                <div className="backIStock-container container">
+                    <div className="backIStock-wrapper wrapper">
+                        <h2 className="title">Back in stock!</h2>
+                        <div className="backIStock">
+                            <div className="bags">
+                                <div className="img-wrapper">
+                                    <img
+                                        src={backIStock.bags.image}
+                                        alt="bags"
+                                    />
+                                </div>
+                                <span>
+                                    Bags
+                                    <img src={Next} alt="next" id="next" />
+                                </span>
+                            </div>
+                            <Card
+                                item={backIStock.product}
+                                key={backIStock.product.id}
+                            />
+                            <div className="shoes">
+                                <div className="img-wrapper">
+                                    <img
+                                        src={backIStock.shoes.image}
+                                        alt="shoes"
+                                    />
+                                </div>
+                                <span>
+                                    Shoes
+                                    <img src={Next} alt="next" id="next" />
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div className="introduction-video container">
+                    <div className="wrapper">
+                        <div className="video-wrapper">
+                            <img
+                                src={video.image}
+                                alt="video"
+                                className="video"
+                            />
+                            <img src={Play} alt="play" className="play" />
+                        </div>
+                    </div>
+                </div>
+                <div className="multicolumn container">
+                    <div className="wrapper">
+                        <div id="multicolumn">
+                            <div className="item">
+                                <img src={Logo1} alt="Mlouye Refinery" />
+                                <span>
+                                    "The leather is sourced from environmentally
+                                    friendly tanneries in Italy, France, and
+                                    Turkey, where Rure is based and everything
+                                    is assembled by hand."
+                                </span>
+                            </div>
+                            <div className="item">
+                                <img src={Logo2} alt="The Cut" />
+                                <span>
+                                    "All too often, we're forced to pick: style,
+                                    or sustainability. Recently, more designers
+                                    have been making environmental impact a top
+                                    priority"
+                                </span>
+                            </div>
                         </div>
                     </div>
                 </div>

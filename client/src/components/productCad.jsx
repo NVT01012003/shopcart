@@ -1,14 +1,7 @@
 import { useContext } from "react";
 import { AuthContext } from "../context/authContext";
-
-const vndFormatter = new Intl.NumberFormat("vi-VN", {
-    style: "currency",
-    currency: "VND",
-});
-const usdFormatter = new Intl.NumberFormat("en-US", {
-    style: "currency",
-    currency: "USD",
-});
+import { vndFormatter, usdFormatter } from "../common/currencyFormater";
+import "../styles/card.scss";
 
 export const Card = ({ item }) => {
     const { currentUser } = useContext(AuthContext);
@@ -16,17 +9,20 @@ export const Card = ({ item }) => {
     return (
         <div className="card-container">
             <div className="img-wrapper">
-                <img src={item.photos[0]} />
+                <img className="img-1" src={item.photos[0]} />
+                {item.photos[1] && (
+                    <img className="img-2" src={item.photos[1]} />
+                )}
                 {item.discount > 0 && <span>Sale</span>}
             </div>
-            <div>
+            <div className="desc-container">
                 <span>{item.name}</span>
                 <div className="prices-wrapper">
                     {item.discount > 0 && (
                         <span className="cost">
-                            ₫{item.price}{" "}
-                            {(currentUser.country == "Viet Nam" && "VND") ||
-                                "USD"}
+                            {(currentUser.country == "Viet Nam" &&
+                                vndFormatter.format(item.price)) ||
+                                usdFormatter.format(item.price)}
                         </span>
                     )}
                     {item.min_price && <span>From</span>}

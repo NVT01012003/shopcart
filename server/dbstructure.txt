@@ -49,6 +49,10 @@ order_item
     - orderId: uuid not null / foreign key order_detail.id
     - productId: uuid not null / foreign key product.id
 
+cart 
+    - userId: uuid not null / foreign key user.id
+    - productId: uuid not null / foreign key product.id
+
 delivery
     - id: uuid default v4 / primary key
     - orderDetailId: uuid not null / foreign key order_detail.id

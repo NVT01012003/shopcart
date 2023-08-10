@@ -75,5 +75,142 @@
                 color: #121212bf;
             }
         }
+        .products-container {
+            padding: 40px 0;
+        }
+        .backIStock-container {
+            .backIStock-wrapper {
+                h2 {
+                    font-size: 24px;
+                    font-weight: 400;
+                    padding: 30px 0;
+                }
+                .backIStock {
+                    display: grid;
+                    grid-template-columns:
+                        calc(
+                            calc(100% - var(--grid-desktop-vertical-spacing)) /
+                                3
+                        )
+                        calc(
+                            calc(100% - var(--grid-desktop-vertical-spacing)) /
+                                3
+                        )
+                        calc(
+                            calc(100% - var(--grid-desktop-vertical-spacing)) /
+                                3
+                        );
+                    grid-template-rows: auto auto auto;
+                    gap: var(--grid-desktop-vertical-spacing);
+                    row-gap: var(--grid-desktop-horizontal-spacing);
+                    img {
+                        width: 100%;
+                    }
+                    .bags {
+                        grid-column: 1 / span 2;
+                        grid-row: 1 / span 2;
+                    }
+                    .shoes {
+                        grid-column: 3 / span 1;
+                        grid-row: 2 / span 1;
+                    }
+                    .product {
+                        grid-column: 3 / span 1;
+                        grid-row: 1 / span 1;
+                    }
+                    .bags,
+                    .shoes {
+                        display: flex;
+                        flex-direction: column;
+                        .img-wrapper {
+                            width: 100%;
+                            flex-grow: 1;
+                            overflow: hidden;
+                            transition: transform 1.5s ease-out,
+                                box-shadow 0.3s ease;
+                            img {
+                                width: 100%;
+                                height: 100%;
+                                object-fit: cover;
+                                object-position: center;
+                                transition: transform 0.5s ease;
+                            }
+                        }
+                        &:hover {
+                            .img-wrapper > img {
+                                transform: scale(1.05);
+                            }
+                        }
+                        span {
+                            display: block;
+                            width: 100%;
+                            height: 40px;
+                            padding: 10px 0;
+                            font-size: 18px;
+                            img {
+                                height: 16px;
+                                padding-top: 3px;
+                                margin-left: 6px;
+                                width: auto;
+                            }
+                        }
+                        &:hover {
+                            .img-wrapper {
+                                box-shadow: -10px -10px 10px -10px #0000000d,
+                                    10px 10px 10px -10px #0000000d,
+                                    0 0 5px #fff0, 0 20px 35px -20px #00000080;
+                                transform: rotate(1deg);
+                            }
+                        }
+                    }
+                    .shoes > .img-wrapper {
+                        aspect-ratio: 1 / 1;
+                    }
+                }
+            }
+        }
+        .introduction-video {
+            .wrapper {
+                .video-wrapper {
+                    width: 100%;
+                    padding: 16px 0;
+                    position: relative;
+                    .video {
+                        width: 100%;
+                    }
+                    .play {
+                        position: absolute;
+                        width: 60px;
+                        height: 60px;
+                        left: calc(50% - 30px);
+                        top: calc(50% - 30px);
+                        cursor: pointer;
+                    }
+                }
+            }
+        }
+        .multicolumn {
+            .wrapper {
+                #multicolumn {
+                    display: flex;
+                    padding: 16px 0 64px;
+                    gap: 16px;
+                    .item {
+                        display: flex;
+                        flex-direction: column;
+                        width: 50%;
+                        text-align: center;
+                        color: var(--primary-text-color);
+                        img {
+                            height: 35px;
+                            object-fit: contain;
+                        }
+                        span {
+                            padding: 25px 0;
+                        }
+                    }
+                }
+            }
+        }
     }
 }

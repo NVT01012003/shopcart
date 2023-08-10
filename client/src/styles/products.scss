@@ -1,0 +1,105 @@
+.products-container {
+    .products-wrapper {
+        .products {
+            margin-top: 84px;
+            .title {
+                padding-top: 10px;
+                margin: 25px 0;
+                line-height: 52px;
+                font-size: 42px;
+                font-weight: 400;
+                text-transform: capitalize;
+            }
+            .filter-sort {
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                .filter {
+                    display: flex;
+                    align-items: center;
+                    gap: 36px;
+                }
+                span {
+                    display: flex;
+                    align-items: center;
+                    font-size: 15px;
+                    color: #000;
+                    cursor: pointer;
+                    &:hover {
+                        text-decoration: underline 0.8px #000;
+                        text-underline-offset: 4px;
+                    }
+                }
+                img {
+                    height: 16px;
+                    padding: 5px;
+                }
+                .filter-title,
+                .sort-title {
+                    &:hover {
+                        text-decoration: unset;
+                    }
+                }
+                .sort {
+                    position: relative;
+                    display: flex;
+                    gap: 36px;
+                    .caption-wrapper {
+                        width: auto;
+                        border: none;
+                        margin: 0;
+                        span {
+                            width: 120px;
+                        }
+                    }
+                    .selector-wrapper {
+                        z-index: 1;
+                        top: calc(100% + 4px);
+                        left: calc(48px + 35px);
+                    }
+                }
+            }
+            #products {
+                margin: 16px 0 20px;
+                padding: 20px 0;
+            }
+            .pagination_list {
+                width: 100%;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                margin-bottom: 52px;
+                a {
+                    display: block;
+                    position: relative;
+                    width: 44px;
+                    height: 44px;
+                    line-height: 44px;
+                    text-align: center;
+                    cursor: pointer;
+                    text-decoration: none;
+                }
+                img {
+                    height: 44px;
+                    width: 44px;
+                    padding: 19px 17px;
+                    cursor: pointer;
+                }
+                #back {
+                    transform: rotate(90deg);
+                }
+                #next {
+                    transform: rotate(-90deg);
+                }
+                .current-page::after {
+                    content: "";
+                    width: 20px;
+                    border-bottom: 1px solid #000;
+                    position: absolute;
+                    bottom: 10px;
+                    left: 12px;
+                }
+            }
+        }
+    }
+}
