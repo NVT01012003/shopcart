@@ -4,8 +4,9 @@ import User from "../imgs/user.png";
 import Bag from "../imgs/bag.png";
 import Close from "../imgs/close.png";
 import "../styles/header.scss";
-import { useRef, useState } from "react";
+import { useContext, useRef, useState } from "react";
 import { Link } from "react-router-dom";
+import { AuthContext } from "../context/authContext";
 
 const bags = {
     "Shop all": "/bags",
@@ -23,6 +24,7 @@ const shoes = {
 };
 
 export const Header = ({ show }) => {
+    const { currentUser } = useContext(AuthContext);
     const [searching, setSearching] = useState(false);
     const [bagCategories, setBagCategories] = useState(false);
     const [shoeCategories, setShoeCategories] = useState(false);
@@ -87,7 +89,11 @@ export const Header = ({ show }) => {
                         </div>
                     </div>
                     <div className="Lookbook-wrapper">
-                        <span>Lookbook</span>
+                        <span>
+                            <a className="lookbook" href="/lookbook">
+                                Lookbook
+                            </a>
+                        </span>
                     </div>
                 </div>
                 <div className="icons-wrapper">
@@ -104,6 +110,9 @@ export const Header = ({ show }) => {
                     </Link>
                     <Link to="cart">
                         <img src={Bag} alt="blog" />
+                        {currentUser.cart && currentUser.cart.length != 0 && (
+                            <span>{currentUser.cart.length}</span>
+                        )}
                     </Link>
                 </div>
             </div>

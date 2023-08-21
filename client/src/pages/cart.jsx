@@ -1,27 +1,9 @@
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { AuthContext } from "../context/authContext";
 import { Card } from "../components/productCad";
-import "../styles/cart.scss";
 import { vndFormatter, usdFormatter } from "../common/currencyFormater";
-
-const cart = [
-    {
-        id: "1",
-        name: "Small Convertible Flex Bag",
-        photo: "https://theme-dawn-demo.myshopify.com/cdn/shop/products/mlouye-small-convertible-flex-bag-cappuccino-n1.jpg?v=1637107143&width=1100",
-        price: 395000,
-        color: "Cylemen",
-        quantity: 1,
-    },
-    {
-        id: "1",
-        name: "Louise Slide Sandal",
-        photo: "https://theme-dawn-demo.myshopify.com/cdn/shop/products/mlouye-louise-slide-sandal-buttermilk-1_b91db288-b05a-4882-ae45-c0c9a4edd5fb.jpg?v=1637106712&width=823",
-        price: 430000,
-        color: "Cylemen",
-        quantity: 1,
-    },
-];
+import Remove from "../imgs/trash.png";
+import "../styles/cart.scss";
 
 const stands = [
     {
@@ -74,7 +56,29 @@ const stands = [
 ];
 
 export const Cart = () => {
-    const { currentUser } = useContext(AuthContext);
+    const { currentUser, setCurrentUser } = useContext(AuthContext);
+    const [cart, setCart] = useState(currentUser.cart);
+
+    const increaseQuantity = (index) => {
+        return setCart((pre) => {
+            pre[index] = { ...pre[index], quantity: pre[index].quantity + 1 };
+            setCurrentUser({
+                ...currentUser,
+                cart: [...pre],
+            });
+            return [...pre];
+        });
+    };
+    const decreaseQuantity = (index) => {
+        return setCart((pre) => {
+            pre[index] = { ...pre[index], quantity: pre[index].quantity - 1 };
+            setCurrentUser({
+                ...currentUser,
+                cart: [...pre],
+            });
+            return [...pre];
+        });
+    };
 
     return (
         <div className="container">
@@ -120,14 +124,14 @@ export const Cart = () => {
                                     {cart.map((value, index) => {
                                         return (
                                             <tr key={index}>
-                                                <td>
+                                                <td className="cart-item">
                                                     <img
                                                         src={value.photo}
                                                         alt={value.name}
                                                     />
                                                     <div>
                                                         <h4>{value.name}</h4>
-                                                        <span className="price">
+                                                        <span>
                                                             {currentUser.country ==
                                                             "Viet Nam"
                                                                 ? vndFormatter.format(
@@ -143,13 +147,118 @@ export const Cart = () => {
                                                         </span>
                                                     </div>
                                                 </td>
-                                                <td>col2</td>
-                                                <td>col3</td>
+                                                <td className="quantity-wrapper">
+                                                    <div className="quantity">
+                                                        <div>
+                                                            <span
+                                                                className={
+                                                                    value.quantity ==
+                                                                    1
+                                                                        ? "disable"
+                                                                        : ""
+                                                                }
+                                                                onClick={() => {
+                                                                    if (
+                                                                        value.quantity !=
+                                                                        1
+                                                                    )
+                                                                        return decreaseQuantity(
+                                                                            index
+                                                                        );
+                                                                }}
+                                                            >
+                                                                -
+                                                            </span>
+                                                            <span>
+                                                                {value.quantity}
+                                                            </span>
+                                                            <span
+                                                                onClick={() =>
+                                                                    increaseQuantity(
+                                                                        index
+                                                                    )
+                                                                }
+                                                            >
+                                                                +
+                                                            </span>
+                                                        </div>
+                                                        <img
+                                                            src={Remove}
+                                                            alt="remove"
+                                                            onClick={() => {
+                                                                setCart(
+                                                                    (pre) => {
+                                                                        pre.splice(
+                                                                            index,
+                                                                            1
+                                                                        );
+                                                                        setCurrentUser(
+                                                                            (
+                                                                                user
+                                                                            ) => ({
+                                                                                ...user,
+                                                                                cart: [
+                                                                                    ...pre,
+                                                                                ],
+                                                                            })
+                                                                        );
+                                                                        return [
+                                                                            ...pre,
+                                                                        ];
+                                                                    }
+                                                                );
+                                                            }}
+                                                        />
+                                                    </div>
+                                                </td>
+                                                <td className="price">
+                                                    {currentUser.country ==
+                                                    "Viet Nam"
+                                                        ? vndFormatter.format(
+                                                              value.price *
+                                                                  value.quantity
+                                                          )
+                                                        : usdFormatter.format(
+                                                              value.price *
+                                                                  value.quantity
+                                                          )}
+                                                </td>
                                             </tr>
                                         );
                                     })}
                                 </tbody>
                             </table>
+                            <div className="footer-wrapper">
+                                <div className="subtotal-wrapper">
+                                    <span className="subtotal">
+                                        <span>Subtotal</span>
+                                        {((user, cart) => {
+                                            let total = 0;
+                                            cart.forEach((value) => {
+                                                total +=
+                                                    value.price *
+                                                    value.quantity;
+                                            });
+                                            if (user.country == "Viet Nam")
+                                                return vndFormatter.format(
+                                                    total
+                                                );
+                                            return usdFormatter.format(total);
+                                        })(currentUser, cart)}
+                                    </span>
+                                    <span className="taxes">
+                                        Taxes and shipping calculated at
+                                        checkout
+                                    </span>
+                                    <div className="btn-wrapper">
+                                        <button>
+                                            <a href="/categories/products/1">
+                                                Check out
+                                            </a>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     )}
                     <div className="suggest-wrapper">

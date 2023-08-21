@@ -45,10 +45,13 @@
         button {
             padding: 12px 32px;
             background-color: transparent;
-            font-size: 16px;
-            color: #ffffffbf;
             border: 1px solid #ffffffbf;
             cursor: pointer;
+            a {
+                font-size: 16px;
+                color: #ffffffbf;
+                text-decoration: none;
+            }
         }
     }
     .home-content {
@@ -86,38 +89,7 @@
                     padding: 30px 0;
                 }
                 .backIStock {
-                    display: grid;
-                    grid-template-columns:
-                        calc(
-                            calc(100% - var(--grid-desktop-vertical-spacing)) /
-                                3
-                        )
-                        calc(
-                            calc(100% - var(--grid-desktop-vertical-spacing)) /
-                                3
-                        )
-                        calc(
-                            calc(100% - var(--grid-desktop-vertical-spacing)) /
-                                3
-                        );
-                    grid-template-rows: auto auto auto;
-                    gap: var(--grid-desktop-vertical-spacing);
-                    row-gap: var(--grid-desktop-horizontal-spacing);
-                    img {
-                        width: 100%;
-                    }
-                    .bags {
-                        grid-column: 1 / span 2;
-                        grid-row: 1 / span 2;
-                    }
-                    .shoes {
-                        grid-column: 3 / span 1;
-                        grid-row: 2 / span 1;
-                    }
-                    .product {
-                        grid-column: 3 / span 1;
-                        grid-row: 1 / span 1;
-                    }
+                    width: 100%;
                     .bags,
                     .shoes {
                         display: flex;

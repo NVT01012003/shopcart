@@ -142,7 +142,9 @@ export const Home = () => {
                     </span>
                     <span>Atypical leather goods</span>
                     <div>
-                        <button className="shop-btn">Shop now</button>
+                        <button className="shop-btn">
+                            <a href="/categories/products/1">Shop now</a>
+                        </button>
                     </div>
                 </div>
             </div>
@@ -166,8 +168,8 @@ export const Home = () => {
                 <div className="backIStock-container container">
                     <div className="backIStock-wrapper wrapper">
                         <h2 className="title">Back in stock!</h2>
-                        <div className="backIStock">
-                            <div className="bags">
+                        <div className="backIStock grid-3-item">
+                            <div className="bags grid-item-1">
                                 <div className="img-wrapper">
                                     <img
                                         src={backIStock.bags.image}
@@ -182,8 +184,9 @@ export const Home = () => {
                             <Card
                                 item={backIStock.product}
                                 key={backIStock.product.id}
+                                added_class="grid-item-2"
                             />
-                            <div className="shoes">
+                            <div className="shoes grid-item-3">
                                 <div className="img-wrapper">
                                     <img
                                         src={backIStock.shoes.image}

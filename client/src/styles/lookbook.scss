@@ -1,0 +1,30 @@
+.lookbook-container {
+    .lookbook {
+        margin-top: 84px;
+        margin-bottom: 70px;
+        .inspiration {
+            display: flex;
+            flex-direction: column;
+            gap: 40px;
+            padding-top: 20px;
+            .title {
+                font-size: 40px;
+                font-weight: 400;
+                color: var(--primary-text-color);
+            }
+            #item {
+                height: 730px;
+                overflow: hidden;
+            }
+        }
+        .featured {
+            padding: 36px 0;
+            .title {
+                font-size: 24px;
+                color: var(--primary-text-color);
+                font-weight: 400;
+                margin-bottom: 30px;
+            }
+        }
+    }
+}

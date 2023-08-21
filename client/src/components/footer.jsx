@@ -21,6 +21,25 @@ const country_region = [
     { "United State": "USD $" },
 ];
 
+const info = [
+    {
+        title: "about us",
+        link: "/info/about us",
+    },
+    {
+        title: "contact us",
+        link: "/info/contact us",
+    },
+    {
+        title: "shipping policy",
+        link: "/info/shipping policy",
+    },
+    {
+        title: "blog",
+        link: "/info/blog",
+    },
+];
+
 export const Footer = () => {
     const [country, setCountry] = useState({
         country: Object.keys(country_region[0]),
@@ -40,10 +59,13 @@ export const Footer = () => {
                         </div>
                         <div className="item col-3">
                             <h2>Info</h2>
-                            <span>About</span>
-                            <span>Contact us</span>
-                            <span>Shipping policy</span>
-                            <span>Blog</span>
+                            <>
+                                {info.map((value, index) => (
+                                    <span key={index}>
+                                        <a href={value.link}>{value.title}</a>
+                                    </span>
+                                ))}
+                            </>
                         </div>
                         <div className="item col-3">
                             <h2>Our mission</h2>

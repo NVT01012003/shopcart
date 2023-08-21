@@ -3,11 +3,11 @@ import { AuthContext } from "../context/authContext";
 import { vndFormatter, usdFormatter } from "../common/currencyFormater";
 import "../styles/card.scss";
 
-export const Card = ({ item }) => {
+export const Card = ({ item, added_class }) => {
     const { currentUser } = useContext(AuthContext);
 
     return (
-        <div className="card-container">
+        <div className={`card-container ${added_class}`}>
             <div className="img-wrapper">
                 <img className="img-1" src={item.photos[0]} />
                 {item.photos[1] && (
