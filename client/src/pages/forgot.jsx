@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import "../styles/form.scss";
 
 export const Forgot = () => {
@@ -18,7 +19,9 @@ export const Forgot = () => {
                     <div className="btn-wrapper">
                         <button className="signin-btn">Submit</button>
                     </div>
-                    <span className="register-link">Cancel</span>
+                    <span className="register-link">
+                        <Link to="/account/signin">Cancel</Link>
+                    </span>
                 </div>
             </div>
         </div>

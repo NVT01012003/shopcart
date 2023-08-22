@@ -169,7 +169,7 @@ export const Home = () => {
                     <div className="backIStock-wrapper wrapper">
                         <h2 className="title">Back in stock!</h2>
                         <div className="backIStock grid-3-item">
-                            <div className="bags grid-item-1">
+                            <div className="bags grid-item-1-areas">
                                 <div className="img-wrapper">
                                     <img
                                         src={backIStock.bags.image}
@@ -184,9 +184,9 @@ export const Home = () => {
                             <Card
                                 item={backIStock.product}
                                 key={backIStock.product.id}
-                                added_class="grid-item-2"
+                                added_class="grid-item-2-areas"
                             />
-                            <div className="shoes grid-item-3">
+                            <div className="shoes grid-item-3-areas">
                                 <div className="img-wrapper">
                                     <img
                                         src={backIStock.shoes.image}

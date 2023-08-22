@@ -13,6 +13,7 @@ import { NotFound } from "./pages/notFound";
 import { Cart } from "./pages/cart";
 import { AboutUs } from "./pages/about";
 import { ContactUs } from "./pages/contact";
+import { ShippingPolicy } from "./pages/shippingpolicy";
 import "./styles/global.scss";
 
 function App() {
@@ -47,6 +48,10 @@ function App() {
                         <Route path="info">
                             <Route path="about us" element={<AboutUs />} />
                             <Route path="contact us" element={<ContactUs />} />
+                            <Route
+                                path="shipping policy"
+                                element={<ShippingPolicy />}
+                            />
                         </Route>
                     </Route>
                     <Route path="*" element={<NotFound />} />

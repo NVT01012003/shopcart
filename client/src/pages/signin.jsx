@@ -22,7 +22,7 @@ export const SignIn = () => {
                         placeholder="Password"
                     />
                     <span className="forgot-password">
-                        Forgot your password?
+                        <Link to="/account/forgot">Forgot your password?</Link>
                     </span>
                     <div className="btn-wrapper">
                         <button className="signin-btn">Sign in</button>

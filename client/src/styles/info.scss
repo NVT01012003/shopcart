@@ -31,7 +31,7 @@
                     display: flex;
                     flex-direction: column;
                     gap: 32px;
-                    font-size: 17px;
+                    font-size: 16px;
                     color: var(--primary-text-color);
                     line-height: 30px;
                 }
@@ -52,7 +52,7 @@
                 span {
                     width: 780px;
                     text-align: center;
-                    font-size: 17px;
+                    font-size: 16px;
                     color: var(--primary-text-color);
                     line-height: 30px;
                 }
@@ -73,7 +73,7 @@
             flex-direction: column;
             gap: 24px;
             span {
-                font-size: 17px;
+                font-size: 16px;
                 color: var(--primary-text-color);
             }
             h2 {
@@ -98,10 +98,10 @@
             textarea {
                 width: 100%;
                 padding: 15px 20px;
-                font-size: 17px;
+                font-size: 16px;
                 color: #000;
                 &::placeholder {
-                    font-size: 17px;
+                    font-size: 16px;
                     color: var(--primary-text-color);
                 }
             }
@@ -129,6 +129,23 @@
                     }
                 }
             }
+        }
+    }
+}
+.shipping_policy-container {
+    .shipping_policy {
+        margin-top: 84px;
+        margin-bottom: 70px;
+        padding-top: 20px;
+        width: 726px;
+        display: flex;
+        flex-direction: column;
+        margin-left: auto;
+        margin-right: auto;
+        span {
+            color: var(--primary-text-color);
+            font-size: 16px;
+            line-height: 28px;
         }
     }
 }
