@@ -53,9 +53,15 @@ export const Footer = () => {
                     <div className="footer_content-wrapper row-3">
                         <div className="item col-3">
                             <h2>Quick links</h2>
-                            <span>Bags</span>
-                            <span>Shoes</span>
-                            <span>Lookbook</span>
+                            <span>
+                                <a href="/categories/bags/1">Bags</a>
+                            </span>
+                            <span>
+                                <a href="/categories/shoes/1">Shoes</a>
+                            </span>
+                            <span>
+                                <a href="/lookbook">Lookbook</a>
+                            </span>
                         </div>
                         <div className="item col-3">
                             <h2>Info</h2>

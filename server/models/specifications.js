@@ -28,7 +28,12 @@ export const Specifications = sequelize.define(
             defaultValue: null,
             allowNull: true,
         },
-        material: {
+        materials: {
+            type: DataTypes.STRING,
+            defaultValue: null,
+            allowNull: true,
+        },
+        instructions: {
             type: DataTypes.STRING,
             defaultValue: null,
             allowNull: true,

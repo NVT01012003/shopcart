@@ -8,7 +8,9 @@ $primary-color: #121212bf;
 
 :root {
     --primary-text-color: #121212bf;
+    --primary-title-color: #121212;
     --primary-border-color: rgba(226, 226, 226, 0.7490196078);
+    --primary-span-color: #919191;
     --grid-desktop-vertical-spacing: 8px;
     --grid-desktop-horizontal-spacing: 8px;
     --grid-mobile-vertical-spacing: 4px;
@@ -21,6 +23,9 @@ $primary-color: #121212bf;
     );
     --grid-mobile-card-witdh: calc(
         calc(100% - var(--grid-mobile-horizontal-spacing)) / 2
+    );
+    --grid-desktop-blogcard-witdh: calc(
+        calc(100% - var(--grid-desktop-horizontal-spacing)) / 2
     );
 }
 

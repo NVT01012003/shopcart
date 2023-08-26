@@ -17,7 +17,7 @@ export const Card = ({ item, added_class }) => {
             </div>
             <div className="desc-container">
                 <span>{item.name}</span>
-                <div className="prices-wrapper">
+                <div className="price-wrapper">
                     {item.discount > 0 && (
                         <span className="cost">
                             {(currentUser.country == "Viet Nam" &&

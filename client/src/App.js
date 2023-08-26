@@ -14,6 +14,9 @@ import { Cart } from "./pages/cart";
 import { AboutUs } from "./pages/about";
 import { ContactUs } from "./pages/contact";
 import { ShippingPolicy } from "./pages/shippingpolicy";
+import { Blogs } from "./pages/blogs";
+import { Blog } from "./pages/blog";
+import { Product } from "./pages/product";
 import "./styles/global.scss";
 
 function App() {
@@ -25,6 +28,7 @@ function App() {
                         <Route index element={<Home />} />
                         <Route path="cart" element={<Cart />} />
                         <Route path="lookbook" element={<LookBook />} />
+                        <Route path="product" element={<Product />} />
                         <Route path="account">
                             <Route index element={<Account />} />
                             <Route path="address" element={<Address />} />
@@ -52,6 +56,10 @@ function App() {
                                 path="shipping policy"
                                 element={<ShippingPolicy />}
                             />
+                            <Route path="blog">
+                                <Route index element={<Blogs />} />
+                                <Route path=":id" element={<Blog />} />
+                            </Route>
                         </Route>
                     </Route>
                     <Route path="*" element={<NotFound />} />

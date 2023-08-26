@@ -28,7 +28,8 @@ specifications
     - weight: decimal not null  / kg
     - color: string default null 
     - brand: string default null 
-    - material: string default null 
+    - materials: string default null 
+    - instructions: string default null
 
 stand
     - id: uuid not null / primary key

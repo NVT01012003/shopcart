@@ -7,8 +7,7 @@
         width: 100%;
         aspect-ratio: 1 / 1;
         overflow: hidden;
-        transform: rotate(0);
-        transition: transform 1.5s ease, box-shadow 0.3s ease;
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
         img {
             width: 100%;
         }
@@ -40,12 +39,12 @@
             font-weight: 300;
             color: 18 18 18;
         }
-        .prices-wrapper {
+        .price-wrapper {
             display: flex;
             gap: 6px;
             .cost {
                 color: var(--primary-text-color);
-                text-decoration: line-through 0.8px var(--primary-text-color);
+                text-decoration: line-through 1px var(--primary-text-color);
                 margin-right: 4px;
             }
             .price {
@@ -62,6 +61,7 @@
                 10px 10px 10px -10px #0000000d, 0 0 5px #fff0,
                 0 20px 35px -20px #00000080;
             transform: rotate(1deg);
+            transition: transform 1.5s ease, box-shadow 0.3s ease;
         }
         .desc-container > span {
             text-decoration: underline 0.8px rgb(18, 18, 18);

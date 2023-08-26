@@ -1,0 +1,92 @@
+a {
+    text-decoration: none;
+}
+.blogcard-wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    .img-wrapper {
+        width: 100%;
+        aspect-ratio: 2 / 1;
+        overflow: hidden;
+        transition: all 0.3s ease-out, box-shadow 0.3s ease-out;
+        img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center;
+            transition: all 0.3s ease-in-out;
+        }
+    }
+    div:nth-child(2) {
+        display: flex;
+        flex-direction: column;
+        h3 {
+            font-size: 26px;
+            font-weight: 400;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+        span {
+            color: var(--primary-span-color);
+        }
+        .date {
+            font-size: 12px;
+            margin-top: 6px;
+        }
+        .desc {
+            margin-top: 20px;
+            display: -webkit-box;
+            -webkit-box-orient: vertical;
+            -webkit-line-clamp: 3;
+            overflow: hidden;
+        }
+    }
+    &:hover {
+        .img-wrapper {
+            box-shadow: -10px -10px 10px -10px #0000000d,
+                10px 10px 10px -10px #0000000d, 0 0 5px #fff0,
+                0 20px 35px -20px #00000080;
+            transform: rotate(1deg);
+            transition: all 1.5s ease-in, box-shadow 0.3s ease-in;
+        }
+        img {
+            transform: scale(1.05);
+        }
+        h3 {
+            text-decoration: underline 2px #000;
+            text-underline-offset: 4px;
+        }
+    }
+}
+#large {
+    text-align: center;
+    .desc {
+        width: 820px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+    .blogcard-wrapper {
+        div:nth-child(2) {
+            padding-bottom: 40px;
+        }
+        h3 {
+            padding-left: 40px;
+            padding-right: 40px;
+        }
+    }
+}
+#medium {
+    width: var(--grid-desktop-blogcard-witdh);
+    overflow: hidden;
+    .blogcard-wrapper {
+        div:nth-child(2) {
+            height: 170px;
+            padding-bottom: 30px;
+        }
+        h3 {
+            padding-right: 30px;
+        }
+    }
+}

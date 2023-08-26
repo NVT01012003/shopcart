@@ -42,7 +42,7 @@ const stands = [
         ],
         products: ["1", "2"],
         price: 395000,
-        discount: 0,
+        discount: null,
     },
     {
         id: "1",
@@ -77,7 +77,7 @@ const stands = [
         ],
         products: ["1", "2"],
         price: 430000,
-        discount: 0,
+        discount: null,
         min_price: true,
     },
     {
