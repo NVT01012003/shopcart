@@ -1,25 +1,25 @@
 import { sequelize } from "../config/dbConnect.js";
 import { DataTypes } from "sequelize";
 
-export const Blog = sequelize.define(
-    "blog",
+export const Blog_Content = sequelize.define(
+    "blog_content",
     {
-        id: {
+        index: {
+            type: DataTypes.INTEGER,
+            allowNull: false,
+        },
+        text: {
+            type: DataTypes.STRING,
+            defaultValue: null,
+            allowNull: true,
+        },
+        photo: {
+            type: DataTypes.STRING,
+            defaultValue: null,
+            allowNull: true,
+        },
+        product: {
             type: DataTypes.UUID,
-            defaultValue: DataTypes.UUIDV4,
-            allowNull: false,
-            primaryKey: true,
-        },
-        title: {
-            type: DataTypes.TEXT,
-            allowNull: false,
-        },
-        article_photo: {
-            type: DataTypes.STRING,
-            allowNull: false,
-        },
-        desc: {
-            type: DataTypes.STRING,
             defaultValue: null,
             allowNull: true,
         },

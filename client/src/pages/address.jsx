@@ -54,7 +54,7 @@ export const Address = () => {
                         <div className="btn-wrapper">
                             <button>Add address</button>
                         </div>
-                        <div className="cancel-btn-wrapper">
+                        <div className="outline-btn-wrapper">
                             <button onClick={() => setNewAddress(false)}>
                                 Cancel
                             </button>
@@ -66,10 +66,10 @@ export const Address = () => {
                     <span className="content">{user.user_name}</span>
                     <span className="content">{user.country}</span>
                     <div>
-                        <div>
+                        <div className="outline-btn-wrapper">
                             <button>Edit</button>
                         </div>
-                        <div>
+                        <div className="outline-btn-wrapper">
                             <button>Delete</button>
                         </div>
                     </div>

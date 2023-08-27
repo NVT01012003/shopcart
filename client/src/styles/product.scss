@@ -2,6 +2,7 @@
     .product-page {
         margin-top: 84px;
         padding-top: 18px;
+        position: relative;
         .photos-details {
             position: relative;
             display: flex;
@@ -107,52 +108,9 @@
                         }
                     }
                 }
-                .add-btn-wrapper {
-                    margin: 12px -2px 0 -2px;
-                    height: 48px;
-                    width: 100%;
-                    display: flex;
-                    align-items: center;
-                    justify-content: center;
-                    button {
-                        color: #000;
-                        background-color: transparent;
-                        font-size: 16px;
-                        word-spacing: 2px;
-                        width: calc(100% - 4px);
-                        line-height: 16px;
-                        padding: 15px 20px;
-                        cursor: pointer;
-                        transition: all 0.2s linear;
-                        border: 1px solid #000;
-                        &:hover {
-                            box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 2px,
-                                rgb(51, 51, 51) 0px 0px 0px 2px;
-                        }
-                    }
-                }
+                .outline-btn-wrapper,
                 .btn-wrapper {
                     margin: 12px -2px 0 -2px;
-                    height: 48px;
-                    width: 100%;
-                    display: flex;
-                    align-items: center;
-                    justify-content: center;
-                    button {
-                        background-color: #000;
-                        color: #fff;
-                        font-size: 16px;
-                        word-spacing: 2px;
-                        width: calc(100% - 4px);
-                        line-height: 16px;
-                        padding: 15px 20px;
-                        cursor: pointer;
-                        transition: all 0.2s ease;
-                        &:hover {
-                            width: 100%;
-                            padding: 16px 22px;
-                        }
-                    }
                 }
                 .desc {
                     margin-top: 20px;
@@ -315,5 +273,79 @@
                 margin-bottom: 30px;
             }
         }
+        .add-to-cart-wrapper {
+            display: none;
+        }
+        .add-to-cart-wrapper#showAdded {
+            display: flex;
+            animation: showAdded 0.2s ease-in;
+        }
+    }
+}
+.no-product-found {
+    position: relative;
+    & > img {
+        margin-top: 84px;
+        width: 100%;
+        min-width: 500px;
+        object-fit: cover;
+        object-position: center;
+        height: auto;
+    }
+    & > div {
+        width: 370px;
+        height: 200px;
+        position: absolute;
+        z-index: 1;
+        top: calc(50% - 100px);
+        left: calc(50% - 185px);
+        text-align: center;
+        h1 {
+            font-size: 60px;
+            margin-bottom: 18px;
+            span {
+                margin-left: 8px;
+                color: #b90000;
+            }
+        }
+        h2 {
+            font-size: 48px;
+            font-weight: 500;
+            color: #b90000;
+            span {
+                margin-left: 12px;
+                color: #000;
+            }
+        }
+        a {
+            margin-top: 8px;
+            margin-left: -8px;
+            font-weight: 500;
+            text-decoration: underline 1px #000;
+            text-underline-offset: 4px;
+            display: flex;
+            gap: 8px;
+            align-items: center;
+            justify-content: center;
+            img {
+                margin-bottom: -2px;
+                width: 24px;
+                height: 16px;
+                padding: 2px 4px;
+                transform: rotateY(180deg);
+            }
+            &:hover {
+                text-decoration: underline 2px #000;
+            }
+        }
+    }
+}
+
+@keyframes showAdded {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
     }
 }

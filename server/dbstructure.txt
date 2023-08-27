@@ -36,9 +36,6 @@ stand
     - name: text not null
     - photos: string[] not null
     - products: uuid[] not null
-    - price: decimal not null
-    - discount: decimal default null
-    - min_price: boolean default false
 
 order_detail
     - id: uuid default v4 / primary key
@@ -78,8 +75,13 @@ message
 blog
     - id: uuid default v4 / primary key
     - title: text not null 
-    - title_image: string not null
-    - content_image: string[] default []
-    - text: text not null 
-    - productId: uuid default null 
+    - article_photo: string not null
+    - desc: string default null
     - created_at: true
+
+blog_content 
+    - blogId: uuid not null 
+    - index: int not null
+    - text: text not null 
+    - photo: default null 
+    - product: uuid default null 

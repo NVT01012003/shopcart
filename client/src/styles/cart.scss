@@ -13,24 +13,9 @@
     }
     .btn-wrapper {
         margin-top: 20px;
-        height: 48px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        button {
-            background-color: #000;
-            padding: 10px 38px;
-            cursor: pointer;
-            transition: all 0.2s ease;
-            a {
-                color: #fff;
-                font-size: 16px;
-                text-decoration: none;
-            }
-            &:hover {
-                padding: 12px 40px;
-            }
-        }
+        width: 180px;
+        margin-left: auto;
+        margin-right: auto;
     }
     .empty-cart {
         margin-bottom: 36px;

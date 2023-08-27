@@ -7,6 +7,7 @@ import { Delivery } from "../models/delivery.js";
 import { Chat } from "../models/chat.js";
 import { Message } from "../models/message.js";
 import { Blog } from "../models/blog.js";
+import { Blog_Content } from "../models/blog_content.js";
 import { Cart } from "../models/cart.js";
 
 // foreign key from users.id to order_details.userId
@@ -42,3 +43,6 @@ Product.belongsToMany(User, { through: Cart, sourceKey: "id" });
 User.belongsToMany(Product, { through: Cart, sourceKey: "id" });
 Cart.belongsTo(User, { targetKey: "id" });
 Cart.belongsTo(Product, { targetKey: "id" });
+// blogs.id to blog_contents.blogId
+Blog.hasMany(Blog_Content, { sourceKey: "id" });
+Blog_Content.belongsTo(Blog, { targetKey: "id" });

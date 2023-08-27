@@ -45,6 +45,11 @@ export const User = sequelize.define(
             defaultValue: null,
             allowNull: true,
         },
+        country: {
+            type: DataTypes.STRING,
+            defaultValue: "Viet Nam",
+            allowNull: false,
+        },
     },
     {
         indexes: [

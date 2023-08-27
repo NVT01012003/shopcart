@@ -1,8 +1,8 @@
 import { sequelize } from "../config/dbConnect.js";
 import { DataTypes } from "sequelize";
 
-export const Blog = sequelize.define(
-    "blog",
+export const Stand = sequelize.define(
+    "stand",
     {
         id: {
             type: DataTypes.UUID,
@@ -10,18 +10,17 @@ export const Blog = sequelize.define(
             allowNull: false,
             primaryKey: true,
         },
-        title: {
+        name: {
             type: DataTypes.TEXT,
             allowNull: false,
         },
-        article_photo: {
-            type: DataTypes.STRING,
+        photos: {
+            type: DataTypes.ARRAY(DataTypes.STRING),
             allowNull: false,
         },
-        desc: {
-            type: DataTypes.STRING,
-            defaultValue: null,
-            allowNull: true,
+        products: {
+            type: DataTypes.ARRAY(DataTypes.UUID),
+            allowNull: false,
         },
     },
     {

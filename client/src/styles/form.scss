@@ -42,19 +42,6 @@
         }
         .btn-wrapper {
             margin-top: 20px;
-            height: 48px;
-            display: flex;
-            align-items: center;
-            button {
-                background-color: #000;
-                color: #fff;
-                padding: 10px 38px;
-                cursor: pointer;
-                transition: all 0.2s ease;
-                &:hover {
-                    padding: 12px 40px;
-                }
-            }
         }
         .enter {
             font-size: 15px;

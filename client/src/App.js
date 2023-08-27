@@ -28,7 +28,6 @@ function App() {
                         <Route index element={<Home />} />
                         <Route path="cart" element={<Cart />} />
                         <Route path="lookbook" element={<LookBook />} />
-                        <Route path="product" element={<Product />} />
                         <Route path="account">
                             <Route index element={<Account />} />
                             <Route path="address" element={<Address />} />
@@ -42,6 +41,9 @@ function App() {
                                 path=":products/:pageNumber"
                                 element={<Products />}
                             />
+                        </Route>
+                        <Route path="product">
+                            <Route path=":id" element={<Product />} />
                         </Route>
                         <Route path="search">
                             <Route

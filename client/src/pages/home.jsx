@@ -8,8 +8,8 @@ const banners = [
     "//theme-dawn-demo.myshopify.com/cdn/shop/files/141569803_417219312901458_4638470652865432174_n.jpg?v=1637107084&width=3840",
     "//theme-dawn-demo.myshopify.com/cdn/shop/files/Mlouye.jpg?v=1637107315&width=3840",
 ];
-const stands = [
-    {
+const stands = {
+    1: {
         id: "1",
         name: "Small Convertible Flex Bag",
         photos: [
@@ -21,8 +21,8 @@ const stands = [
         discount: 75000,
         min_price: true,
     },
-    {
-        id: "1",
+    2: {
+        id: "2",
         name: "Louise Slide Sandal",
         photos: [
             "https://theme-dawn-demo.myshopify.com/cdn/shop/products/mlouye-louise-slide-sandal-buttermilk-1_b91db288-b05a-4882-ae45-c0c9a4edd5fb.jpg?v=1637106712&width=823",
@@ -33,8 +33,8 @@ const stands = [
         discount: 45000,
         min_price: true,
     },
-    {
-        id: "1",
+    3: {
+        id: "3",
         name: "Small Convertible Flex Bag",
         photos: [
             "https://theme-dawn-demo.myshopify.com/cdn/shop/products/mlouye-small-convertible-flex-bag-cappuccino-n1.jpg?v=1637107143&width=1100",
@@ -44,8 +44,8 @@ const stands = [
         price: 395000,
         discount: null,
     },
-    {
-        id: "1",
+    4: {
+        id: "4",
         name: "Louise Slide Sandal",
         photos: [
             "https://theme-dawn-demo.myshopify.com/cdn/shop/products/mlouye-louise-slide-sandal-buttermilk-1_b91db288-b05a-4882-ae45-c0c9a4edd5fb.jpg?v=1637106712&width=823",
@@ -56,8 +56,8 @@ const stands = [
         discount: 45000,
         min_price: true,
     },
-    {
-        id: "1",
+    5: {
+        id: "5",
         name: "Small Convertible Flex Bag",
         photos: [
             "https://theme-dawn-demo.myshopify.com/cdn/shop/products/mlouye-small-convertible-flex-bag-cappuccino-n1.jpg?v=1637107143&width=1100",
@@ -68,8 +68,8 @@ const stands = [
         discount: 75000,
         min_price: true,
     },
-    {
-        id: "1",
+    6: {
+        id: "6",
         name: "Louise Slide Sandal",
         photos: [
             "https://theme-dawn-demo.myshopify.com/cdn/shop/products/mlouye-louise-slide-sandal-buttermilk-1_b91db288-b05a-4882-ae45-c0c9a4edd5fb.jpg?v=1637106712&width=823",
@@ -80,8 +80,8 @@ const stands = [
         discount: null,
         min_price: true,
     },
-    {
-        id: "1",
+    7: {
+        id: "7",
         name: "Louise Slide Sandal",
         photos: [
             "https://theme-dawn-demo.myshopify.com/cdn/shop/products/mlouye-louise-slide-sandal-buttermilk-1_b91db288-b05a-4882-ae45-c0c9a4edd5fb.jpg?v=1637106712&width=823",
@@ -92,8 +92,8 @@ const stands = [
         discount: 45000,
         min_price: true,
     },
-    {
-        id: "1",
+    8: {
+        id: "8",
         name: "Small Convertible Flex Bag",
         photos: [
             "https://theme-dawn-demo.myshopify.com/cdn/shop/products/mlouye-small-convertible-flex-bag-cappuccino-n1.jpg?v=1637107143&width=1100",
@@ -103,7 +103,7 @@ const stands = [
         price: 395000,
         discount: 75000,
     },
-];
+};
 const backIStock = {
     bags: {
         image: "https://theme-dawn-demo.myshopify.com/cdn/shop/collections/Mlouye_-_Bags_collection.jpg?v=1637109194&width=750",
@@ -159,8 +159,8 @@ export const Home = () => {
                 <div className="products-container container">
                     <div className="products-wrapper wrapper">
                         <div id="products">
-                            {stands.map((value, index) => (
-                                <Card key={index} item={value} />
+                            {Object.values(stands).map((value, index) => (
+                                <Card item={value} key={index} />
                             ))}
                         </div>
                     </div>

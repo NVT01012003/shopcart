@@ -26,19 +26,7 @@
         }
         & > .btn-wrapper {
             margin-top: 12px;
-            height: 48px;
-            display: flex;
-            align-items: center;
-            button {
-                background-color: #000;
-                color: #fff;
-                padding: 10px 38px;
-                cursor: pointer;
-                transition: all 0.2s ease;
-                &:hover {
-                    padding: 12px 40px;
-                }
-            }
+            width: 280px;
         }
         .default-wrapper {
             width: 100%;
@@ -58,21 +46,6 @@
                 gap: 12px;
                 div {
                     width: 122px;
-                    height: 47px;
-                    display: flex;
-                    justify-content: center;
-                }
-                button {
-                    width: 120px;
-                    height: 45px;
-                    background-color: #fff;
-                    border: 1px solid #000;
-                    cursor: pointer;
-                    &:hover {
-                        height: 100%;
-                        width: 100%;
-                        border: 2px solid #000;
-                    }
                 }
             }
         }
@@ -116,44 +89,12 @@
                 display: flex;
                 gap: 20px;
                 align-items: flex-start;
-                div {
-                    height: 47px;
-                    display: flex;
-                    align-items: center;
-                    justify-content: center;
-                }
-                button {
-                    height: 45px;
-                    padding: 0 30px;
-                    cursor: pointer;
-                    transition: width 0.2s ease, height 0.2s ease;
-                }
+                justify-content: center;
                 .btn-wrapper {
                     width: 146px;
-                    button {
-                        width: 144px;
-                        background-color: #000;
-                        color: #fff;
-                        border: none;
-                        &:hover {
-                            height: 100%;
-                            width: 100%;
-                        }
-                    }
                 }
-                .cancel-btn-wrapper {
+                .outline-btn-wrapper {
                     width: 130px;
-                    button {
-                        width: 128px;
-                        background-color: #fff;
-                        color: #000;
-                        border: 1px solid #000;
-                        &:hover {
-                            width: 100%;
-                            height: 100%;
-                            border: 3px solid #000;
-                        }
-                    }
                 }
             }
         }

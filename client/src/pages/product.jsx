@@ -1,104 +1,115 @@
 import { useContext, useState } from "react";
 import { AuthContext } from "../context/authContext";
+import { useParams } from "react-router-dom";
 import { vndFormatter, usdFormatter } from "../common/currencyFormater";
 import Heart from "../imgs/heart.png";
 import Ruler from "../imgs/ruler.png";
 import Materials from "../imgs/materials.png";
 import ArrowDown from "../imgs/down-arrow.png";
 import Upload from "../imgs/upload.png";
+import NoProduct from "../imgs/no_product.png";
+import Next from "../imgs/next.png";
 import { Card } from "../components/productCad";
+import { AddToCard } from "../components/addToCard";
 import "../styles/product.scss";
 
-const stand = {
-    name: "Small Convertible Flex Bag",
-    desc: "Our architectural, origami inspired shoulder bag, now has a new dimension. It can be converted into a wrist bag just with a quick move. The shoulder strap can easily be removed, so you can slung it from your wrist or use as a clutch. It has plenty of room inside for your essentials including a large phone, small wallet, and 300 ml water bottle. Made from smooth leather and has a suede top with two-way zip fastening. Interior features two slip pockets. ",
-    products: {
-        1: {
-            photos: [
-                "https://theme-dawn-demo.myshopify.com/cdn/shop/products/mlouye-small-convertible-flex-bag-cappuccino-n1.jpg?v=1637107143&width=1100",
-                "https://theme-dawn-demo.myshopify.com/cdn/shop/products/mlouye-small-convertible-flex-bag-cappuccino-n2.jpg?v=1637107143&width=1100",
-                "https://theme-dawn-demo.myshopify.com/cdn/shop/products/mlouye-small-convertible-flex-bag-cappuccino-n3.jpg?v=1637107143&width=1100",
-                "https://theme-dawn-demo.myshopify.com/cdn/shop/products/mlouye-small-convertible-flex-bag-cappuccino-n4.jpg?v=1637107143&width=1100",
-                "https://theme-dawn-demo.myshopify.com/cdn/shop/products/mlouye-small-convertible-flex-bag-cappuccino-n5.jpg?v=1637107143&width=1100",
-                "https://theme-dawn-demo.myshopify.com/cdn/shop/products/mlouye-small-convertible-flex-bag-cappuccino-n6.jpg?v=1637107143&width=1100",
-                "https://theme-dawn-demo.myshopify.com/cdn/shop/products/mlouye-small-convertible-flex-bag-cappuccino-n8.jpg?v=1637107143&width=1100",
-                "https://theme-dawn-demo.myshopify.com/cdn/shop/products/mlouye-small-convertible-flex-bag-cappuccino-n10.jpg?v=1637107143&width=1100",
-                "https://theme-dawn-demo.myshopify.com/cdn/shop/products/mlouye-small-convertible-flex-bag-cappuccino-n12.jpg?v=1637107143&width=1100",
-            ],
-            price: 395000,
-            sale: true,
-            discount: 75000,
-            specifications: {
-                color: "Cappuchino",
-                materials:
-                    "Crafted from smooth calf leather. Canvas lining. Brushed gold hardware. Two interior pockets. Detachable and adjustable shoulder strap.",
-                width: 0.21,
-                height: 0.28,
-                instructions:
-                    "Use a soft damp cloth and a drop of mild soap to remove any haze. Air dry.",
+const stands = {
+    1: {
+        name: "Small Convertible Flex Bag",
+        desc: "Our architectural, origami inspired shoulder bag, now has a new dimension. It can be converted into a wrist bag just with a quick move. The shoulder strap can easily be removed, so you can slung it from your wrist or use as a clutch. It has plenty of room inside for your essentials including a large phone, small wallet, and 300 ml water bottle. Made from smooth leather and has a suede top with two-way zip fastening. Interior features two slip pockets. ",
+        products: {
+            1: {
+                id: "1",
+                name: "Small Convertible Flex Bag",
+                photos: [
+                    "https://theme-dawn-demo.myshopify.com/cdn/shop/products/mlouye-small-convertible-flex-bag-cappuccino-n1.jpg?v=1637107143&width=1100",
+                    "https://theme-dawn-demo.myshopify.com/cdn/shop/products/mlouye-small-convertible-flex-bag-cappuccino-n2.jpg?v=1637107143&width=1100",
+                    "https://theme-dawn-demo.myshopify.com/cdn/shop/products/mlouye-small-convertible-flex-bag-cappuccino-n3.jpg?v=1637107143&width=1100",
+                    "https://theme-dawn-demo.myshopify.com/cdn/shop/products/mlouye-small-convertible-flex-bag-cappuccino-n4.jpg?v=1637107143&width=1100",
+                    "https://theme-dawn-demo.myshopify.com/cdn/shop/products/mlouye-small-convertible-flex-bag-cappuccino-n5.jpg?v=1637107143&width=1100",
+                    "https://theme-dawn-demo.myshopify.com/cdn/shop/products/mlouye-small-convertible-flex-bag-cappuccino-n6.jpg?v=1637107143&width=1100",
+                    "https://theme-dawn-demo.myshopify.com/cdn/shop/products/mlouye-small-convertible-flex-bag-cappuccino-n8.jpg?v=1637107143&width=1100",
+                    "https://theme-dawn-demo.myshopify.com/cdn/shop/products/mlouye-small-convertible-flex-bag-cappuccino-n10.jpg?v=1637107143&width=1100",
+                    "https://theme-dawn-demo.myshopify.com/cdn/shop/products/mlouye-small-convertible-flex-bag-cappuccino-n12.jpg?v=1637107143&width=1100",
+                ],
+                price: 395000,
+                sale: true,
+                discount: 75000,
+                specifications: {
+                    color: "Cappuchino",
+                    materials:
+                        "Crafted from smooth calf leather. Canvas lining. Brushed gold hardware. Two interior pockets. Detachable and adjustable shoulder strap.",
+                    width: 0.21,
+                    height: 0.28,
+                    instructions:
+                        "Use a soft damp cloth and a drop of mild soap to remove any haze. Air dry.",
+                },
             },
-        },
-        2: {
-            photos: [
-                "https://theme-dawn-demo.myshopify.com/cdn/shop/products/mlouye-small-convertible-flex-bag-clay-1_1.jpg?v=1637107143&width=1100",
-                "https://theme-dawn-demo.myshopify.com/cdn/shop/products/mlouye-small-convertible-flex-bag-clay-2_1.jpg?v=1637107143&width=1100",
-                "https://theme-dawn-demo.myshopify.com/cdn/shop/products/mlouye-small-convertible-flex-bag-clay-3_6fb17082-d2ed-46f9-a530-5714b96ebe56.jpg?v=1637107143&width=1100",
-                "https://theme-dawn-demo.myshopify.com/cdn/shop/products/mlouye-small-convertible-flex-bag-clay-4_590e232c-1974-4d7c-871e-705d0298bed2.jpg?v=1637107143&width=1100",
-                "https://theme-dawn-demo.myshopify.com/cdn/shop/products/mlouye-small-convertible-flex-bag-clay-12_ae6c226f-224d-4c91-b2ba-91c9cb43eb04.jpg?v=1637107143&width=1100",
-            ],
-            price: 395000,
-            sale: false,
-            discount: null,
-            specifications: {
-                color: "Clay",
-                materials:
-                    "Crafted from smooth calf leather. Canvas lining. Brushed gold hardware. Two interior pockets. Detachable and adjustable shoulder strap.",
-                width: 0.21,
-                height: 0.28,
-                instructions:
-                    "Use a soft damp cloth and a drop of mild soap to remove any haze. Air dry.",
+            2: {
+                id: "2",
+                photos: [
+                    "https://theme-dawn-demo.myshopify.com/cdn/shop/products/mlouye-small-convertible-flex-bag-clay-1_1.jpg?v=1637107143&width=1100",
+                    "https://theme-dawn-demo.myshopify.com/cdn/shop/products/mlouye-small-convertible-flex-bag-clay-2_1.jpg?v=1637107143&width=1100",
+                    "https://theme-dawn-demo.myshopify.com/cdn/shop/products/mlouye-small-convertible-flex-bag-clay-3_6fb17082-d2ed-46f9-a530-5714b96ebe56.jpg?v=1637107143&width=1100",
+                    "https://theme-dawn-demo.myshopify.com/cdn/shop/products/mlouye-small-convertible-flex-bag-clay-4_590e232c-1974-4d7c-871e-705d0298bed2.jpg?v=1637107143&width=1100",
+                    "https://theme-dawn-demo.myshopify.com/cdn/shop/products/mlouye-small-convertible-flex-bag-clay-12_ae6c226f-224d-4c91-b2ba-91c9cb43eb04.jpg?v=1637107143&width=1100",
+                ],
+                price: 395000,
+                sale: false,
+                discount: null,
+                specifications: {
+                    color: "Clay",
+                    materials:
+                        "Crafted from smooth calf leather. Canvas lining. Brushed gold hardware. Two interior pockets. Detachable and adjustable shoulder strap.",
+                    width: 0.21,
+                    height: 0.28,
+                    instructions:
+                        "Use a soft damp cloth and a drop of mild soap to remove any haze. Air dry.",
+                },
             },
-        },
-        3: {
-            photos: [
-                "https://theme-dawn-demo.myshopify.com/cdn/shop/products/mlouye-small-convertible-flex-bag-denim-1_0bc8bc96-e96c-4475-8bd7-57732cc73716.jpg?v=1637107143&width=1100",
-                "https://theme-dawn-demo.myshopify.com/cdn/shop/products/mlouye-small-convertible-flex-bag-denim-2_837bc7f6-0a13-4b23-bff6-34a6dd3f1e38.jpg?v=1637107143&width=1100",
-                "https://theme-dawn-demo.myshopify.com/cdn/shop/products/mlouye-small-convertible-flex-bag-denim-3_79d0d821-844e-4a87-aa2f-da39d6d8ff84.jpg?v=1637107143&width=1100",
-                "https://theme-dawn-demo.myshopify.com/cdn/shop/products/mlouye-small-convertible-flex-bag-denim-4_3d3d4a96-eabf-45f4-a995-6c3a1af8b051.jpg?v=1637107143&width=1100",
-                "https://theme-dawn-demo.myshopify.com/cdn/shop/products/mlouye-small-convertible-flex-bag-denim-11_1.jpg?v=1637107143&width=1100",
-            ],
-            price: 395000,
-            sale: false,
-            discount: null,
-            specifications: {
-                color: "Denim",
-                materials:
-                    "Crafted from smooth calf leather. Canvas lining. Brushed gold hardware. Two interior pockets. Detachable and adjustable shoulder strap.",
-                width: 0.21,
-                height: 0.28,
-                instructions:
-                    "Use a soft damp cloth and a drop of mild soap to remove any haze. Air dry.",
+            3: {
+                id: "3",
+                photos: [
+                    "https://theme-dawn-demo.myshopify.com/cdn/shop/products/mlouye-small-convertible-flex-bag-denim-1_0bc8bc96-e96c-4475-8bd7-57732cc73716.jpg?v=1637107143&width=1100",
+                    "https://theme-dawn-demo.myshopify.com/cdn/shop/products/mlouye-small-convertible-flex-bag-denim-2_837bc7f6-0a13-4b23-bff6-34a6dd3f1e38.jpg?v=1637107143&width=1100",
+                    "https://theme-dawn-demo.myshopify.com/cdn/shop/products/mlouye-small-convertible-flex-bag-denim-3_79d0d821-844e-4a87-aa2f-da39d6d8ff84.jpg?v=1637107143&width=1100",
+                    "https://theme-dawn-demo.myshopify.com/cdn/shop/products/mlouye-small-convertible-flex-bag-denim-4_3d3d4a96-eabf-45f4-a995-6c3a1af8b051.jpg?v=1637107143&width=1100",
+                    "https://theme-dawn-demo.myshopify.com/cdn/shop/products/mlouye-small-convertible-flex-bag-denim-11_1.jpg?v=1637107143&width=1100",
+                ],
+                price: 395000,
+                sale: false,
+                discount: null,
+                specifications: {
+                    color: "Denim",
+                    materials:
+                        "Crafted from smooth calf leather. Canvas lining. Brushed gold hardware. Two interior pockets. Detachable and adjustable shoulder strap.",
+                    width: 0.21,
+                    height: 0.28,
+                    instructions:
+                        "Use a soft damp cloth and a drop of mild soap to remove any haze. Air dry.",
+                },
             },
-        },
-        4: {
-            photos: [
-                "https://theme-dawn-demo.myshopify.com/cdn/shop/products/mlouye-small-convertible-flex-bag-harvest-1_79a01701-4d23-405e-9672-05535d42af4c.jpg?v=1637107143&width=1100",
-                "https://theme-dawn-demo.myshopify.com/cdn/shop/products/mlouye-small-convertible-flex-bag-harvest-3_96dd2fc1-5c07-4080-b2ff-759a5b2421dc.jpg?v=1637107143&width=1100",
-                "https://theme-dawn-demo.myshopify.com/cdn/shop/products/mlouye-small-convertible-flex-bag-harvest-4_626adc70-e218-475b-af2b-ca2bf97ac926.jpg?v=1637107143&width=1100",
-                "https://theme-dawn-demo.myshopify.com/cdn/shop/products/mlouye-small-convertible-flex-bag-harvest-6_f72f7f55-8e85-4312-96b4-dca59bb12dfc.jpg?v=1637107143&width=1100",
-                "https://theme-dawn-demo.myshopify.com/cdn/shop/products/mlouye-small-convertible-flex-bag-harvest-12_6295c6ff-bb1d-4b31-a423-0959d5ab307d.jpg?v=1637107143&width=1100",
-            ],
-            price: 395000,
-            sale: false,
-            discount: null,
-            specifications: {
-                color: "Harvest",
-                materials:
-                    "Crafted from smooth calf leather. Canvas lining. Brushed gold hardware. Two interior pockets. Detachable and adjustable shoulder strap.",
-                width: 0.21,
-                height: 0.28,
-                instructions:
-                    "Use a soft damp cloth and a drop of mild soap to remove any haze. Air dry.",
+            4: {
+                id: "4",
+                photos: [
+                    "https://theme-dawn-demo.myshopify.com/cdn/shop/products/mlouye-small-convertible-flex-bag-harvest-1_79a01701-4d23-405e-9672-05535d42af4c.jpg?v=1637107143&width=1100",
+                    "https://theme-dawn-demo.myshopify.com/cdn/shop/products/mlouye-small-convertible-flex-bag-harvest-3_96dd2fc1-5c07-4080-b2ff-759a5b2421dc.jpg?v=1637107143&width=1100",
+                    "https://theme-dawn-demo.myshopify.com/cdn/shop/products/mlouye-small-convertible-flex-bag-harvest-4_626adc70-e218-475b-af2b-ca2bf97ac926.jpg?v=1637107143&width=1100",
+                    "https://theme-dawn-demo.myshopify.com/cdn/shop/products/mlouye-small-convertible-flex-bag-harvest-6_f72f7f55-8e85-4312-96b4-dca59bb12dfc.jpg?v=1637107143&width=1100",
+                    "https://theme-dawn-demo.myshopify.com/cdn/shop/products/mlouye-small-convertible-flex-bag-harvest-12_6295c6ff-bb1d-4b31-a423-0959d5ab307d.jpg?v=1637107143&width=1100",
+                ],
+                price: 395000,
+                sale: false,
+                discount: null,
+                specifications: {
+                    color: "Harvest",
+                    materials:
+                        "Crafted from smooth calf leather. Canvas lining. Brushed gold hardware. Two interior pockets. Detachable and adjustable shoulder strap.",
+                    width: 0.21,
+                    height: 0.28,
+                    instructions:
+                        "Use a soft damp cloth and a drop of mild soap to remove any haze. Air dry.",
+                },
             },
         },
     },
@@ -162,16 +173,45 @@ const new_product = {
 };
 
 export const Product = () => {
-    const [product, setProduct] = useState(Object.values(stand.products)[0]);
+    const { id } = useParams();
     const [quantity, setQuantity] = useState(1);
-
     const [show, setShow] = useState({});
     const { currentUser } = useContext(AuthContext);
+    const stand = stands[id];
+    const [product, setProduct] = useState(
+        Object.keys(stands).includes(id)
+            ? Object.values(stand?.products)[0]
+            : {}
+    );
+    const [showAdded, setShowAdded] = useState(false);
+    if (!Object.keys(stands).includes(id))
+        return (
+            <div className="no-product-found">
+                <img src={NoProduct} alt="no-product" />
+                <div>
+                    <h1>
+                        Sorry<span>!</span>
+                    </h1>
+                    <h2>
+                        No product<span>found.</span>
+                    </h2>
+                    <a href="/">
+                        <img src={Next} alt="back-arrow" />
+                        <span>Back to home page</span>
+                    </a>
+                </div>
+            </div>
+        );
 
     return (
         <div className="product-page-container container">
             <div className="wrapper">
                 <div className="product-page">
+                    <AddToCard
+                        item={product}
+                        quantity={quantity}
+                        show={{ showAdded, setShowAdded }}
+                    />
                     <div className="photos-details">
                         <div className="product-photos">
                             <img src={product.photos[0]} alt="product-photo" />
@@ -263,7 +303,10 @@ export const Product = () => {
                                     </span>
                                 </div>
                             </div>
-                            <div className="add-btn-wrapper">
+                            <div
+                                className="outline-btn-wrapper"
+                                onClick={() => setShowAdded(true)}
+                            >
                                 <button>Add to cart</button>
                             </div>
                             <div className="btn-wrapper">
