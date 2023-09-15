@@ -305,7 +305,14 @@ export const Product = () => {
                             </div>
                             <div
                                 className="outline-btn-wrapper"
-                                onClick={() => setShowAdded(true)}
+                                onClick={() =>
+                                    setShowAdded(() => {
+                                        setTimeout(() => {
+                                            setShowAdded(false);
+                                        }, 3000);
+                                        return true;
+                                    })
+                                }
                             >
                                 <button>Add to cart</button>
                             </div>

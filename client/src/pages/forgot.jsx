@@ -20,7 +20,7 @@ export const Forgot = () => {
                         <button className="signin-btn">Submit</button>
                     </div>
                     <span className="register-link">
-                        <Link to="/account/signin">Cancel</Link>
+                        <Link to="/account">Cancel</Link>
                     </span>
                 </div>
             </div>

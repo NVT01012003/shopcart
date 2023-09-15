@@ -35,11 +35,6 @@ export const User = sequelize.define(
             defaultValue: null,
             allowNull: true,
         },
-        address: {
-            type: DataTypes.STRING,
-            defaultValue: null,
-            allowNull: true,
-        },
         password: {
             type: DataTypes.STRING,
             defaultValue: null,
@@ -48,6 +43,11 @@ export const User = sequelize.define(
         country: {
             type: DataTypes.STRING,
             defaultValue: "Viet Nam",
+            allowNull: false,
+        },
+        status: {
+            type: DataTypes.STRING,
+            defaultValue: "active",
             allowNull: false,
         },
     },

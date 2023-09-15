@@ -4,15 +4,18 @@ import {
     createUser,
     updatePassword,
     findUser,
+    findAdminByEmail,
 } from "../controllers/auth.js";
 import { createHashPass, comparePass } from "../config/bcryptPass.js";
 import {
     generateToken,
     generateRefreshToken,
+    verifyRefreshToken,
     generateForgotToken,
     verifyForgotToken,
 } from "../config/jwtToken.js";
 import { mailOptions, transporter } from "../utils/mailer.js";
+import { validatePass, validateEmail } from "../config/bcryptPass.js";
 import dotenv from "dotenv";
 
 dotenv.config();
@@ -27,6 +30,10 @@ authRouter.post("/register", async (req, res, next) => {
             !data.password
         )
             throw new Error("Requested data is not enough");
+        else if (!validateEmail(data.email))
+            throw new Error("Email is invalid");
+        else if (!validatePass(data.password))
+            throw new Error("Password is invalid");
         const findUser = await findUserByEmail(data.email);
         if (findUser) throw new Error("Email already exsits");
         const hash = createHashPass(data.password);
@@ -48,10 +55,11 @@ authRouter.post("/register", async (req, res, next) => {
             message: "OK",
             element: {
                 user: newUser,
-                token,
+                token: `Bearer ${token}`,
             },
         });
     } catch (e) {
+        console.log(e);
         res.status(400);
         next(e);
     }
@@ -61,8 +69,12 @@ authRouter.post("/signin", async (req, res, next) => {
     try {
         const data = req.body;
         if (!data.email || !data.password)
-            throw new Error("Email and password id require");
-        const findUser = await findUserByEmail(data.email);
+            throw new Error("Email and password is require");
+        else if (!validateEmail(data.email))
+            throw new Error("Email is invalid");
+        else if (!validatePass(data.password))
+            throw new Error("Password is invalid");
+        const findUser = await findUserByEmail(data.email, true);
         if (!findUser) throw new Error("User not found");
         if (!comparePass(data.password, findUser.password))
             throw new Error("Password incorrect");
@@ -82,11 +94,15 @@ authRouter.post("/signin", async (req, res, next) => {
             status: 200,
             message: "OK",
             element: {
-                user: findUser,
-                token,
+                user: {
+                    ...findUser,
+                    password: null,
+                },
+                token: `Bearer ${token}`,
             },
         });
     } catch (e) {
+        console.log(e);
         res.status(400);
         next(e);
     }
@@ -147,6 +163,7 @@ authRouter.get("/forgot-password/:id/:token", async (req, res, next) => {
         next(e);
     }
 });
+
 authRouter.post("/reset-password/:id", async (req, res, next) => {
     const { id } = req.params;
     try {
@@ -156,6 +173,65 @@ authRouter.post("/reset-password/:id", async (req, res, next) => {
         res.json({
             status: 200,
             message: "OK",
+        });
+    } catch (e) {
+        res.status(400);
+        next(e);
+    }
+});
+
+authRouter.get("/fetch-user", async (req, res, next) => {
+    try {
+        const { refresh_token } = req.cookies;
+        const payload = verifyRefreshToken(refresh_token);
+        if (!payload) throw new Error("Forbidden");
+        const { id } = payload;
+        const user = await findUser(id);
+        const token = generateToken({
+            id: user.id,
+            user_name: `${user.first_name} ${user.last_name}`,
+        });
+        res.json({
+            status: 200,
+            message: "OK",
+            element: {
+                user: user,
+                token: `Bearer ${token}`,
+            },
+        });
+    } catch (e) {
+        res.status(400);
+        next(e);
+    }
+});
+
+authRouter.post("/admin", async (req, res, next) => {
+    try {
+        const data = req.body;
+        if (!data.email || !data.password)
+            throw new Error("Email and password is require");
+        else if (!validateEmail(data.email))
+            throw new Error("Email is invalid");
+        else if (!validatePass(data.password))
+            throw new Error("Password is invalid");
+        const findUser = await findAdminByEmail(data.email, true);
+        if (!findUser) throw new Error("User not found");
+        if (!comparePass(data.password, findUser.password))
+            throw new Error("Password incorrect");
+        const token = generateToken({
+            id: findUser.id,
+            user_name: `${findUser.first_name} ${findUser.last_name}`,
+        });
+        res.json({
+            status: 200,
+            message: "OK",
+            element: {
+                user: {
+                    ...findUser,
+                    password: null,
+                },
+                token: `Bearer ${token}`,
+            },
         });
     } catch (e) {
         res.status(400);

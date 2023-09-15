@@ -9,6 +9,13 @@ import { Message } from "../models/message.js";
 import { Blog } from "../models/blog.js";
 import { Blog_Content } from "../models/blog_content.js";
 import { Cart } from "../models/cart.js";
+import { Address } from "../models/address.js";
+import { App_Config } from "../models/app_config.js";
+import { Payment } from "../models/payment.js";
+import { Comment } from "../models/comment.js";
+import { Stand } from "../models/stand.js";
+import { Contact } from "../models/contact.js";
+import { History } from "../models/history.js";
 
 // foreign key from users.id to order_details.userId
 User.hasMany(Order_Detail, {
@@ -17,7 +24,10 @@ User.hasMany(Order_Detail, {
 Order_Detail.belongsTo(User, {
     targetKey: "id",
 });
-// from products.id to specifications.productId
+// users.id to addresses.userId
+User.hasMany(Address, { sourceKey: "id" });
+Address.belongsTo(User, { targetKey: "id" });
+// products.id to specifications.productId
 Product.hasOne(Specifications, {
     sourceKey: "id",
 });
@@ -46,3 +56,17 @@ Cart.belongsTo(Product, { targetKey: "id" });
 // blogs.id to blog_contents.blogId
 Blog.hasMany(Blog_Content, { sourceKey: "id" });
 Blog_Content.belongsTo(Blog, { targetKey: "id" });
+// configs.id to payments.configId
+App_Config.hasMany(Payment, { sourceKey: "id" });
+Payment.belongsTo(App_Config, { targetKey: "id" });
+// comments.id to stands.commentId
+Comment.hasOne(Stand, { sourceKey: "id" });
+Stand.belongsTo(Stand, { targetKey: "id" });
+// contacts.id to configs.contactId
+Contact.hasOne(App_Config, { sourceKey: "id" });
+App_Config.belongsTo(Contact, { targetKey: "id" });
+// users to products through histories
+User.belongsToMany(Product, { through: History, sourceKey: "id" });
+Product.belongsToMany(User, { through: History, sourceKey: "id" });
+History.belongsTo(User, { targetKey: "id" });
+History.belongsTo(Product, { targetKey: "id" });

@@ -6,10 +6,15 @@ user
     - is_admin: boolean default false
     - email: string unique default null
     - oauthId: string unique default null
-    - address: string default null
     - password: string defualt null
     - country: string default 'Viet Nam'
     - created_at: true
+
+address
+    - userId: uuid not null
+    - address_name: string default null
+    - address: string not null
+    - default: boolean default false
 
 product
     - id: uuid default v4 / primary key
@@ -20,6 +25,7 @@ product
     - sale: boolean default false
     - discount: decimal default null
     - photo: string[] not null
+    - quantity: int not null
 
 specifications
     - productId: uuid not null / foreign key product.id
@@ -31,11 +37,26 @@ specifications
     - materials: string default null 
     - instructions: string default null
 
+history_product
+    - userId: uuid not null
+    - productId: uuid not null 
+    - created_at: true
+
 stand
     - id: uuid not null / primary key
     - name: text not null
+    - category: string not null
     - photos: string[] not null
     - products: uuid[] not null
+    - commentId: uuid not null 
+
+comment 
+    - id: uuid default v4
+    - userId: uuid not null 
+    - text: text default null
+    - photo: string default null 
+    - media: string default null 
+    - rate: int not null 
 
 order_detail
     - id: uuid default v4 / primary key
@@ -50,6 +71,7 @@ order_item
 cart 
     - userId: uuid not null / foreign key user.id
     - productId: uuid not null / foreign key product.id
+    - quantity: int not null default 1
 
 delivery
     - id: uuid default v4 / primary key
@@ -85,3 +107,30 @@ blog_content
     - text: text not null 
     - photo: default null 
     - product: uuid default null 
+
+app_config 
+    - id: int default 0 auto increament
+    - banner: string not null 
+    - home_products: uuid[] not null
+    - back_in_stock: uuid allow null
+    - contactId: uuid
+    - paymentId: uuid
+    - 
+
+contact
+    - id: uuid default v4
+    - name: string not null 
+    - phone_number: string not null 
+    - address: string default null
+    - email: string not null 
+    - facebook: string default null
+    - instagram: string deafault null
+    - youtube: string default null 
+    - tiktok: string default null
+    - twitter: string default null
+
+payment
+    - id: uuid default v4 
+    - configId: int not null
+    - method: string not null 
+    - ... more info

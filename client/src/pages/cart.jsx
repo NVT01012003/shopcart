@@ -1,5 +1,6 @@
 import { useContext, useState } from "react";
 import { AuthContext } from "../context/authContext";
+import { StoreContext } from "../context/storeContext";
 import { Card } from "../components/productCad";
 import { vndFormatter, usdFormatter } from "../common/currencyFormater";
 import Remove from "../imgs/trash.png";
@@ -56,14 +57,15 @@ const stands = [
 ];
 
 export const Cart = () => {
-    const { currentUser, setCurrentUser } = useContext(AuthContext);
-    const [cart, setCart] = useState(currentUser.cart);
+    const { store, setStore } = useContext(StoreContext);
+    const { currentUser } = useContext(AuthContext);
+    const [cart, setCart] = useState(store.cart);
 
     const increaseQuantity = (index) => {
         return setCart((pre) => {
             pre[index] = { ...pre[index], quantity: pre[index].quantity + 1 };
-            setCurrentUser({
-                ...currentUser,
+            setStore({
+                ...store,
                 cart: [...pre],
             });
             return [...pre];
@@ -72,8 +74,8 @@ export const Cart = () => {
     const decreaseQuantity = (index) => {
         return setCart((pre) => {
             pre[index] = { ...pre[index], quantity: pre[index].quantity - 1 };
-            setCurrentUser({
-                ...currentUser,
+            setStore({
+                ...store,
                 cart: [...pre],
             });
             return [...pre];
@@ -192,11 +194,11 @@ export const Cart = () => {
                                                                             index,
                                                                             1
                                                                         );
-                                                                        setCurrentUser(
+                                                                        setStore(
                                                                             (
-                                                                                user
+                                                                                store
                                                                             ) => ({
-                                                                                ...user,
+                                                                                ...store,
                                                                                 cart: [
                                                                                     ...pre,
                                                                                 ],

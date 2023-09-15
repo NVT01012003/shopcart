@@ -52,7 +52,7 @@ googleRouter.get("/callback", async (req, res, next) => {
         const { id, email, name, given_name, family_name } = googleUser;
         let newUser;
         const findUser = await findUserByEmail(email);
-        if (findUser && id == findUser.oauthid) newUser = findUser;
+        if (findUser && id == findUser.dataValues.oauthid) newUser = findUser;
         else {
             newUser = await createUser({
                 oauthid: id,
@@ -61,28 +61,16 @@ googleRouter.get("/callback", async (req, res, next) => {
                 last_name: given_name,
             });
         }
-        const token = generateToken({
-            id: newUser.id,
-            user_name: name,
-        });
         const refreshToken = generateRefreshToken({
-            id: newUser.id,
+            id: newUser.dataValues.id,
             user_name: name,
         });
         res.cookie("refresh_token", refreshToken, {
             maxAge: 3 * 24 * 60 * 60 * 1000,
             httpOnly: true,
             secure: true,
-        }).json({
-            status: 200,
-            message: "OK",
-            element: {
-                user: newUser,
-                token,
-            },
-        });
+        }).redirect(process.env.CLIENT_URL);
     } catch (e) {
-        console.log(e);
         res.status(400);
         next(e);
     }

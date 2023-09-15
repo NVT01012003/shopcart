@@ -1,7 +1,7 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { Layout } from "./components/layout";
 import { Home } from "./pages/home";
-import { SignIn } from "./pages/signin";
+import { SignIn } from "./components/signin";
 import { SignUp } from "./pages/signup";
 import { Reset } from "./pages/reset";
 import { Forgot } from "./pages/forgot";
@@ -26,12 +26,15 @@ function App() {
                 <Routes>
                     <Route path="/" element={<Layout />}>
                         <Route index element={<Home />} />
+                        <Route
+                            path="fetch-user/:id"
+                            element={<Home fetchUser={true} />}
+                        />
                         <Route path="cart" element={<Cart />} />
                         <Route path="lookbook" element={<LookBook />} />
                         <Route path="account">
                             <Route index element={<Account />} />
                             <Route path="address" element={<Address />} />
-                            <Route path="signin" element={<SignIn />} />
                             <Route path="signup" element={<SignUp />} />
                             <Route path="reset" element={<Reset />} />
                             <Route path="forgot" element={<Forgot />} />

@@ -3,6 +3,7 @@ import Next from "../imgs/next.png";
 import Play from "../imgs/play-button.png";
 import Logo1 from "../imgs/Mlouye_Refinery_logo.png";
 import Logo2 from "../imgs/the-cut-logo2.png";
+import { useContext } from "react";
 import "../styles/home.scss";
 const banners = [
     "//theme-dawn-demo.myshopify.com/cdn/shop/files/141569803_417219312901458_4638470652865432174_n.jpg?v=1637107084&width=3840",
@@ -128,6 +129,7 @@ const video = {
 };
 
 export const Home = () => {
+    const { currentUser } = useContext;
     return (
         <div className="home container">
             <div className="banner-background">

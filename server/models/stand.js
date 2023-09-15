@@ -14,6 +14,10 @@ export const Stand = sequelize.define(
             type: DataTypes.TEXT,
             allowNull: false,
         },
+        category: {
+            type: DataTypes.STRING,
+            allowNull: false,
+        },
         photos: {
             type: DataTypes.ARRAY(DataTypes.STRING),
             allowNull: false,

@@ -51,7 +51,7 @@ facebookRouter.get("/callback", async (req, res, next) => {
         const { id, email, last_name, first_name } = data;
         let newUser;
         const findUser = await findUserByEmail(email);
-        if (findUser && id == findUser.oauthid) newUser = findUser;
+        if (findUser && id == findUser.dataValues.oauthid) newUser = findUser;
         else {
             newUser = await createUser({
                 oauthid: id,
@@ -60,26 +60,15 @@ facebookRouter.get("/callback", async (req, res, next) => {
                 last_name,
             });
         }
-        const token = generateToken({
-            id: newUser.id,
-            user_name: `${first_name} ${last_name}`,
-        });
         const refreshToken = generateRefreshToken({
-            id: newUser.id,
+            id: newUser.dataValues.id,
             user_name: `${first_name} ${last_name}`,
         });
         res.cookie("refresh_token", refreshToken, {
             maxAge: 3 * 24 * 60 * 60 * 1000,
             httpOnly: true,
             secure: true,
-        }).json({
-            status: 200,
-            message: "OK",
-            element: {
-                user: newUser,
-                token,
-            },
-        });
+        }).redirect(process.env.CLIENT_URL);
     } catch (e) {
         res.status(400);
         next(e);

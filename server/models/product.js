@@ -40,6 +40,10 @@ export const Product = sequelize.define(
             type: DataTypes.ARRAY(DataTypes.STRING),
             allowNull: false,
         },
+        quantity: {
+            type: DataTypes.INTEGER,
+            allowNull: false,
+        },
     },
     {
         indexes: [

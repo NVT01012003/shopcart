@@ -6,7 +6,7 @@ import Close from "../imgs/close.png";
 import "../styles/header.scss";
 import { useContext, useRef, useState } from "react";
 import { Link } from "react-router-dom";
-import { AuthContext } from "../context/authContext";
+import { StoreContext } from "../context/storeContext";
 
 const bags = {
     "Shop all": "/bags",
@@ -24,7 +24,7 @@ const shoes = {
 };
 
 export const Header = ({ show }) => {
-    const { currentUser } = useContext(AuthContext);
+    const { store } = useContext(StoreContext);
     const [searching, setSearching] = useState(false);
     const [bagCategories, setBagCategories] = useState(false);
     const [shoeCategories, setShoeCategories] = useState(false);
@@ -110,8 +110,8 @@ export const Header = ({ show }) => {
                     </Link>
                     <Link to="cart">
                         <img src={Bag} alt="blog" />
-                        {currentUser.cart && currentUser.cart.length != 0 && (
-                            <span>{currentUser.cart.length}</span>
+                        {store.cart && store.cart.length != 0 && (
+                            <span>{store.cart.length}</span>
                         )}
                     </Link>
                 </div>

@@ -88,5 +88,51 @@
                 }
             }
         }
+        .notice {
+            width: 100%;
+            .error {
+                display: flex;
+                flex-direction: row;
+                gap: 8px;
+                align-items: center;
+                span {
+                    font-size: 22px;
+                    font-weight: 500;
+                    color: var(---primary-title-color);
+                    line-height: 22px;
+                }
+                img {
+                    width: 16px;
+                    height: 16px;
+                }
+            }
+            & > div {
+                display: flex;
+                flex-direction: column;
+                & > div {
+                    margin-left: 8px;
+                    width: 100%;
+                    display: flex;
+                    gap: 12px;
+                    align-items: center;
+                    .dot {
+                        font-size: 24px;
+                        font-weight: 600;
+                    }
+                    & > span:last-child {
+                        flex-grow: 1;
+                        font-size: 14px;
+                        font-weight: 500;
+                        line-height: 30px;
+                        color: #121212d9;
+                        text-decoration: underline 1px #121212d9;
+                        text-underline-offset: 3px;
+                    }
+                }
+                &:last-child {
+                    margin-left: 12px;
+                }
+            }
+        }
     }
 }

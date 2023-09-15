@@ -1,19 +1,29 @@
 import express from "express";
 import dotenv from "dotenv";
 import { router } from "./auth/index.js";
+import { apiRouter } from "./routes/index.js";
 import { sequelize } from "./config/dbConnect.js";
 import bodyParser from "body-parser";
 import { notFound, errorHandler } from "./middlewares/errorHandler.js";
 import { client } from "./config/redis.js";
-import "./utils/dbRelation.js";
 import { dirname } from "path";
 import { fileURLToPath } from "url";
+import cors from "cors";
+import cookieParser from "cookie-parser";
+import "./utils/dbRelation.js";
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 dotenv.config();
 const app = express();
 const port = process.env.PORT;
 // middleware
+app.use(
+    cors({
+        origin: [process.env.CLIENT_URL, process.env.ADMIN_URL],
+        credentials: true,
+    })
+);
+app.use(cookieParser());
 app.use(bodyParser.json());
 app.use(
     bodyParser.urlencoded({
@@ -25,6 +35,7 @@ app.set("views", `${process.cwd()}/views`);
 app.use(express.static(__dirname + "/views"));
 // routes
 app.use("/auth", router);
+app.use("/api", apiRouter);
 
 // middleware handle error
 app.use(notFound);

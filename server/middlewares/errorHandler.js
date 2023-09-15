@@ -6,5 +6,14 @@ export const notFound = (req, res, next) => {
 
 export const errorHandler = (error, request, response, next) => {
     const statuscode = response.statusCode == 200 ? 500 : response.statusCode;
-    response.status(statuscode).send(`Error: ${error.message}`);
+    response.status(statuscode).json(error.message);
+};
+
+export const hanleDbError = async (callback, ...args) => {
+    try {
+        const data = await callback(args);
+        return data;
+    } catch (e) {
+        throw new Error("Server error");
+    }
 };
