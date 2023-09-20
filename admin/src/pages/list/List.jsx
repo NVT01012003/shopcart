@@ -20,7 +20,6 @@ const userColumns = [
         headerName: "Email",
         width: 230,
     },
-
     {
         field: "status",
         headerName: "Status",
@@ -115,7 +114,7 @@ const List = () => {
             <Sidebar />
             <div className="listContainer">
                 <Navbar />
-                <Datatable rows={userRows} columns={userColumns} />
+                <Datatable rows={userRows} columns={userColumns} to="users" />
             </div>
         </div>
     );

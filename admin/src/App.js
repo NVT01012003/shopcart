@@ -11,6 +11,8 @@ import { DarkModeContext } from "./context/darkModeContext";
 // import { AuthContext } from "./context/authContext";
 import "./style/dark.scss";
 import { ListProduct } from "./pages/listProduct/ListProduct";
+import ListOrder from "./pages/listOrder/listOrder";
+import Order from "./pages/order/order";
 // import { NotFound } from "./pages/notFound/notFound";
 
 function App() {
@@ -56,6 +58,10 @@ function App() {
                                     />
                                 }
                             />
+                        </Route>
+                        <Route path="orders">
+                            <Route index element={<ListOrder />} />
+                            <Route path="test" element={<Order />} />
                         </Route>
                     </Route>
                     {/* )} */}

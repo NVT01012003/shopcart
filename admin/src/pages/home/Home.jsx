@@ -4,32 +4,32 @@ import Widget from "../../components/widget/Widget";
 import Featured from "../../components/featured/Featured";
 import Chart from "../../components/chart/Chart";
 import Table from "../../components/table/Table";
-import { useContext, useEffect } from "react";
-import { instance } from "../../config/axiosConfig";
-import { StoreContext } from "../../context/storeContext";
+// import { useContext, useEffect } from "react";
+// import { instance } from "../../config/axiosConfig";
+// import { StoreContext } from "../../context/storeContext";
 
 import "./home.scss";
 
 const Home = () => {
-    const { dispatch } = useContext(StoreContext);
+    // const { dispatch } = useContext(StoreContext);
 
-    useEffect(() => {
-        return async () => {
-            try {
-                const { data } = await instance.get("/api/getAllUser");
-                dispatch({
-                    type: "ADD_USERS",
-                    users: data.element.users,
-                });
-                dispatch({
-                    type: "ADD_PRODUCTS",
-                    products: data.element.products,
-                });
-            } catch (e) {
-                console.log(e);
-            }
-        };
-    }, []);
+    // useEffect(() => {
+    //     return async () => {
+    //         try {
+    //             const { data } = await instance.get("/api/getAllUser");
+    //             dispatch({
+    //                 type: "ADD_USERS",
+    //                 users: data.element.users,
+    //             });
+    //             dispatch({
+    //                 type: "ADD_PRODUCTS",
+    //                 products: data.element.products,
+    //             });
+    //         } catch (e) {
+    //             console.log(e);
+    //         }
+    //     };
+    // }, []);
 
     return (
         <div className="home">

@@ -39,7 +39,7 @@ export const userInputs = [
 export const productInputs = [
     {
         id: 1,
-        label: "Title",
+        label: "Name",
         type: "text",
         placeholder: "Apple Macbook Pro",
     },
@@ -59,12 +59,51 @@ export const productInputs = [
         id: 4,
         label: "Price",
         type: "text",
-        placeholder: "100",
+        placeholder: "100000₫",
     },
     {
         id: 5,
+        label: "Width",
+        type: "text",
+        placeholder: "100cm",
+    },
+    {
+        id: 6,
+        label: "Height",
+        type: "text",
+        placeholder: "100cm",
+    },
+    {
+        id: 7,
+        label: "Color",
+        type: "text",
+        placeholder: "white",
+    },
+    {
+        id: 8,
+        label: "Brand",
+        type: "Materials",
+        placeholder: "plastic",
+    },
+    {
+        id: 9,
+        label: "Instructions",
+        type: "text",
+        placeholder:
+            "Use a soft damp cloth and a drop of mild soap to remove any haze. Air dry.",
+    },
+    {
+        id: 10,
         label: "Stock",
         type: "text",
+        placeholder: "in stock",
+    },
+    {
+        id: 11,
+        label: "Photos",
+        type: "file",
+        multiple: true,
+        accept: "image/*",
         placeholder: "in stock",
     },
 ];

@@ -1,21 +1,18 @@
-.product {
+.order {
     display: flex;
     width: 100%;
-    .productContainer {
+    .orderContainer {
         flex: 6;
         .top {
             padding: 20px;
             display: flex;
             gap: 20px;
-
             .left {
                 flex: 1;
                 -webkit-box-shadow: 2px 4px 10px 1px rgba(0, 0, 0, 0.47);
                 box-shadow: 2px 4px 10px 1px rgba(201, 201, 201, 0.47);
                 padding: 20px;
                 position: relative;
-                aspect-ratio: 1 / 1;
-                overflow-y: scroll;
                 .editButton {
                     position: absolute;
                     top: 0;
@@ -53,9 +50,29 @@
                         }
                     }
                 }
-            }
-            .right {
-                flex: 2;
+                & > div {
+                    display: flex;
+                    gap: 20px;
+                    button {
+                        padding: 8px 20px;
+                        cursor: pointer;
+                        &.complete {
+                            background-color: rgba(255, 217, 0, 0.05);
+                            color: goldenrod;
+                            border: 1px solid goldenrod;
+                        }
+                        &.pending {
+                            background-color: rgba(0, 128, 0, 0.05);
+                            color: green;
+                            border: 1px solid green;
+                        }
+                        &.cancel {
+                            background-color: rgba(255, 0, 0, 0.05);
+                            color: crimson;
+                            border: 1px solid crimson;
+                        }
+                    }
+                }
             }
         }
         .bottom {
@@ -63,17 +80,39 @@
             box-shadow: 2px 4px 10px 1px rgba(201, 201, 201, 0.47);
             padding: 20px;
             margin: 10px 20px;
-            .photos {
-                display: flex;
-                flex-wrap: wrap;
-                justify-content: space-between;
-                .photoItem {
-                    width: 24%;
-                    aspect-ratio: 1 / 1;
-                    img {
-                        width: 100%;
-                        object-fit: cover;
-                        object-position: center;
+            position: relative;
+            .editButton {
+                position: absolute;
+                top: 0;
+                right: 0;
+                padding: 5px;
+                font-size: 12px;
+                color: #7451f8;
+                background-color: #7551f818;
+                cursor: pointer;
+                border-radius: 0px 0px 0px 5px;
+            }
+
+            .item {
+                .details {
+                    .itemTitle {
+                        margin-bottom: 10px;
+                        color: #555;
+                    }
+
+                    .detailItem {
+                        margin-bottom: 10px;
+                        font-size: 14px;
+
+                        .itemKey {
+                            font-weight: bold;
+                            color: gray;
+                            margin-right: 5px;
+                        }
+
+                        .itemValue {
+                            font-weight: 300;
+                        }
                     }
                 }
             }

@@ -20,6 +20,8 @@ const New = ({ inputs, title }) => {
                                     <input
                                         type={input.type}
                                         placeholder={input.placeholder}
+                                        multiple={input.multiple}
+                                        accept={input.accept || null}
                                     />
                                 </div>
                             ))}

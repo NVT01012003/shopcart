@@ -118,7 +118,7 @@ export const ListProduct = () => {
                 <Datatable
                     columns={productColumns}
                     rows={productRows}
-                    product={true}
+                    to="products"
                 />
             </div>
         </div>

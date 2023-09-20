@@ -3,7 +3,7 @@ import { DataGrid } from "@mui/x-data-grid";
 import { Link } from "react-router-dom";
 import { useState } from "react";
 
-const Datatable = ({ columns, rows, product }) => {
+const Datatable = ({ columns, rows, to }) => {
     const [data, setData] = useState(rows);
 
     const handleDelete = (id) => {
@@ -19,7 +19,7 @@ const Datatable = ({ columns, rows, product }) => {
                 return (
                     <div className="cellAction">
                         <Link
-                            to={(product && "/products/test") || "/users/test"}
+                            to={`/${to}/test`}
                             style={{ textDecoration: "none" }}
                         >
                             <div className="viewButton">View</div>
@@ -38,8 +38,12 @@ const Datatable = ({ columns, rows, product }) => {
     return (
         <div className="datatable">
             <div className="datatableTitle">
-                {product ? "Add New Product" : "Add New User"}
-                <Link to="/users/new" className="link">
+                {to == "products"
+                    ? "Add New Product"
+                    : to == "users"
+                    ? "Add New User"
+                    : "Add New Order"}
+                <Link to={`/${to}/test`} className="link">
                     Add New
                 </Link>
             </div>
